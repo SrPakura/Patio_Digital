@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patio Digital | Product Agency</title>
+    
+    <!-- FUENTES: Space Grotesk (Títulos) e Inter (Texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           CSS INTEGRADO - ESTILO NEO-POP / BRUTALISM
+           ========================================= */
+        
+        :root {
+            /* PALETA DE COLOR */
+            --bg: #FAFAFA;          /* Blanco roto limpio */
+            --ink: #111111;         /* Negro casi puro */
+            --accent: #FF4500;      /* Naranja Internacional (Vibrante) */
+            --accent-soft: #FFE5D9; /* Naranja pastel para fondos */
+            --gray: #888888;
+            
+            /* SISTEMA DE DISEÑO */
+            --border-thick: 3px solid var(--ink);
+            --border-thin: 1px solid var(--ink);
+            --shadow-hard: 6px 6px 0px 0px var(--ink); /* La sombra dura estilo Pop */
+            --shadow-hover: 2px 2px 0px 0px var(--ink);
+            --container: 1300px;
+            --header-height: 90px;
+        }
+
+        /* RESET BÁSICO */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden; /* Evita scroll horizontal no deseado */
+        }
+
+        h1, h2, h3, h4, .btn, .nav-link, .logo-fallback {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* UTILIDADES */
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        .section-pad { padding: 8rem 0; border-bottom: var(--border-thick); }
+        
+        /* HEADER / NAV */
+        header {
+            height: var(--header-height);
+            border-bottom: var(--border-thick);
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 50px; /* Logo grande */
+            font-weight: 800;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        
+        .logo img { height: 100%; width: auto; }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        /* Enlaces estilo "Etiqueta" */
+        .ext-link {
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+            opacity: 0.6;
+        }
+        .ext-link:hover { opacity: 1; border-color: var(--accent); color: var(--accent); }
+        
+        /* Estilo para links internos del nav */
+        .nav-internal {
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .nav-internal:hover { text-decoration: underline; color: var(--accent); }
+
+        .btn {
+            display: inline-block;
+            background: var(--ink);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            font-weight: 700;
+            border: 2px solid var(--ink);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* Efecto botón Pop Art */
+        .btn:hover {
+            background: var(--accent);
+            color: var(--ink);
+            box-shadow: 4px 4px 0 var(--ink);
+            transform: translate(-2px, -2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 90vh; /* No 100vh para evitar cortes en móvil */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: var(--border-thick);
+            position: relative;
+            background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+            background-size: 30px 30px; /* Trama de puntos de fondo */
+            background-color: #fafafa;
+        }
+
+        .hero-content {
+            background: var(--bg);
+            border: var(--border-thick);
+            padding: 3rem;
+            box-shadow: var(--shadow-hard);
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            color: #444;
+        }
+
+        /* STATS BAR */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: var(--border-thick);
+            background: var(--ink);
+            color: #fff;
+        }
+
+        .stat-item {
+            padding: 3rem 2rem;
+            border-right: 1px solid #333;
+            text-align: center;
+        }
+        .stat-item:last-child { border-right: none; }
+
+        .stat-num { font-size: 3.5rem; font-weight: 700; line-height: 1; margin-bottom: 0.5rem; color: var(--accent); font-family: 'Space Grotesk'; }
+        .stat-label { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; }
+
+        /* MANIFIESTO / SERVICIOS */
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+
+        .sticky-col {
+            padding: 4rem;
+            border-right: var(--border-thick);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: var(--accent); /* Fondo naranja potente */
+            color: var(--ink);
+        }
+        
+        .content-col {
+            padding: 0;
+        }
+
+        .service-row {
+            padding: 4rem;
+            border-bottom: var(--border-thick);
+            transition: 0.3s;
+        }
+        .service-row:last-child { border-bottom: none; }
+        .service-row:hover { background: var(--accent-soft); }
+
+        .service-row h3 { font-size: 2rem; margin-bottom: 1rem; }
+
+        /* SELECTED WORK */
+        .work-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            margin-bottom: 4rem;
+        }
+        .work-header h2 { font-size: 4rem; line-height: 1; }
+
+        .project-list {
+            border-top: var(--border-thick);
+        }
+
+        .project-item {
+            display: grid;
+            grid-template-columns: 0.5fr 2fr 0.5fr auto;
+            align-items: center;
+            padding: 2.5rem 0;
+            border-bottom: var(--border-thick);
+            font-family: 'Space Grotesk';
+            transition: 0.2s;
+            cursor: pointer;
+            text-decoration: none; /* Asegura que no tenga subrayado por defecto */
+            color: var(--ink);
+        }
+
+        .project-item:hover {
+            background: var(--ink);
+            color: var(--accent);
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .p-year { font-weight: 600; opacity: 0.6; }
+        .p-title { font-size: 2.5rem; font-weight: 700; }
+        .p-cat { text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .p-arrow { font-size: 2rem; }
+
+        /* TEAM TEASER */
+        .team-teaser {
+            background: var(--accent-soft);
+            text-align: center;
+            border-bottom: var(--border-thick);
+        }
+        .team-teaser h2 { font-size: 3rem; margin-bottom: 2rem; }
+
+        /* FOOTER / CONTACT */
+        .contact-section {
+            background: var(--ink);
+            color: #fff;
+            text-align: center;
+            padding: 10rem 2rem;
+        }
+
+        .big-email {
+            font-size: clamp(2rem, 6vw, 6rem);
+            font-family: 'Space Grotesk';
+            font-weight: 700;
+            color: #fff;
+            border-bottom: 4px solid var(--accent);
+            transition: 0.3s;
+        }
+        .big-email:hover { background: var(--accent); color: var(--ink); border-bottom-color: transparent; }
+
+        footer {
+            background: var(--ink);
+            color: #666;
+            padding: 2rem;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* MOBILE MENU TOGGLE */
+        .mobile-btn { display: none; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--ink); }
+        .mobile-menu {
+            position: fixed;
+            top: var(--header-height); left: 0; width: 100%; height: calc(100vh - var(--header-height));
+            background: var(--bg);
+            padding: 2rem;
+            border-top: var(--border-thick);
+            transform: translateX(100%);
+            transition: 0.3s ease-in-out;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        .mobile-menu.active { transform: translateX(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .mobile-btn { display: block; }
+            .grid-2-col { grid-template-columns: 1fr; }
+            .sticky-col { height: auto; padding: 3rem 2rem; border-right: none; border-bottom: var(--border-thick); }
+            .project-item { grid-template-columns: 1fr auto; gap: 1rem; }
+            .p-cat, .p-year { display: none; }
+            .p-title { font-size: 1.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-item { border-right: none; border-bottom: 1px solid #333; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-wrapper">
+            <!-- LOGO: Se carga 'logo.svg', si falla, muestra texto -->
+            <a href="#" class="logo">
+                <img src="logo.svg" alt="Patio Digital" onerror="this.style.display='none'; document.getElementById('logo-text').style.display='block'">
+                <span id="logo-text" style="display:none;">PATIO DIGITAL.</span>
+            </a>
+
+            <!-- NAV DESKTOP -->
+            <nav class="nav-links">
+                <!-- Link añadido a Equipo -->
+                <a href="team.html" class="nav-internal">El Equipo</a>
+
+                <!-- Enlaces externos sin destacar feo -->
+                <a href="https://www.notion.so/Agencia-one-week-2c48a85f5c1381a082cced74186e35ba" target="_blank" class="ext-link">Notion Interno ↗</a>
+                <a href="https://docs.google.com/spreadsheets/d/1PncjFOzsQ0GMAAVbnwxLNP6JAW-ZfLkmE1ho0Lqjjp8/edit?gid=1223155724#gid=1223155724" target="_blank" class="ext-link">Control Gastos ↗</a>
+                
+                <!-- CTA Mejorado -->
+                <a href="#contacto" class="btn">Empezar Proyecto</a>
+            </nav>
+
+            <!-- HAMBURGER ICON MOBILE -->
+            <button class="mobile-btn" onclick="toggleMenu()">☰</button>
+        </div>
+    </header>
+
+    <!-- MENU MOBILE -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="team.html" class="nav-link" style="font-size: 2rem;">El Equipo</a>
+        <a href="https://notion.so" class="nav-link" style="font-size: 1.5rem;">Notion</a>
+        <a href="#contacto" class="btn" style="width: 100%; text-align: center;">Hablemos</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Diseño productos<br>digitales <span class="highlight">sin drama</span>.</h1>
+                    <p>
+                        Somos <strong>Patio Digital</strong>. Una agencia que entiende que tu usuario no lee, escanea. 
+                        Diseñamos, codeamos y desplegamos. Sin plantillas, sin excusas y con mucho café.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#work" class="btn">Ver Portfolio</a>
+                        <a href="team.html" class="btn" style="background: transparent; color: var(--ink);">Conoce al Equipo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATS (Separador visual potente) -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-num">150+</div>
+                <div class="stat-label">Proyectos Lanzados</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">ZERO</div>
+                <div class="stat-label">Plantillas de Wordpress</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-num">100%</div>
+                <div class="stat-label">Propiedad Intelectual</div>
+            </div>
+        </div>
+
+        <!-- SERVICIOS (Layout dividido) -->
+        <section class="grid-2-col">
+            <div class="sticky-col">
+                <h2>No hacemos de todo.<br>Hacemos esto <span style="text-decoration: underline;">muy bien</span>.</h2>
+            </div>
+            <div class="content-col">
+                <div class="service-row">
+                    <h3>01. Estrategia & Caos</h3>
+                    <p>Antes de abrir Figma, pensamos. Analizamos el mercado para que no lances otra app que nadie necesita. Convertimos ideas vagas en roadmaps sólidos.</p>
+                </div>
+                <div class="service-row">
+                    <h3>02. UI/UX Radical</h3>
+                    <p>Diseño visual con carácter. Sistemas de diseño escalables, accesibles (Tori vigila esto con lupa) y que enamoran a primera vista.</p>
+                </div>
+                <div class="service-row">
+                    <h3>03. Desarrollo A Medida</h3>
+                    <p>Código limpio, semántico y rápido. Nada de builders pesados. Creamos activos digitales que Google ama y tu competencia envidia.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO -->
+        <section class="section-pad" id="work">
+            <div class="container">
+                <div class="work-header">
+                    <h2>Selected<br>Work.</h2>
+                    <p style="max-width: 300px; text-align: right;">Proyectos donde nos dejaron hacer lo que mejor sabemos hacer.</p>
+                </div>
+
+                <div class="project-list">
+                    <!-- Proyecto 1 (Actualizado) -->
+                    <a href="netflix-ai.html" class="project-item">
+                        <span class="p-year">2024</span>
+                        <span class="p-title">Netflix AI Movie Builder</span>
+                        <span class="p-cat">AI / Streaming</span>
+                        <span class="p-arrow">→</span>
+                    </a>
+                    <!-- Proyecto 2 (Actualizado) -->
+                    <a href="roomsync.html" class="project-item">
+                        <span class="p-year">2024</span>
+                        <span class="p-title">RoomSync+</span>
+                        <span class="p-cat">Proptech App</span>
+                        <span class="p-arrow">→</span>
+                    </a>
+                    <!-- Proyecto 3 -->
+                    <a href="cryptodash.html" class="project-item">
+                        <span class="p-year">2023</span>
+                        <span class="p-title">CryptoDash Protocol</span>
+                        <span class="p-cat">Web3 / SaaS</span>
+                        <span class="p-arrow">→</span>
+                    </a>
+                    <!-- Proyecto 4 -->
+                    <a href="vogue-analytics.html" class="project-item">
+                        <span class="p-year">2023</span>
+                        <span class="p-title">Vogue Analytics</span>
+                        <span class="p-cat">Dashboard B2B</span>
+                        <span class="p-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM TEASER -->
+        <section class="section-pad team-teaser">
+            <div class="container">
+                <h2>Cerebros y Píxeles.</h2>
+                <p style="margin-bottom: 2rem;">Detrás de cada línea de código hay cafeína y estrés gestionado.</p>
+                <a href="team.html" class="btn">Conoce a los culpables →</a>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="contact-section" id="contacto">
+            <div class="container">
+                <p style="text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem;">¿Tienes un proyecto ambicioso?</p>
+                <a href="mailto:hola@patiodigital.com" class="big-email">hola@patiodigital.com</a>
+                <p style="margin-top: 3rem; opacity: 0.6;">(Prometemos no usar IA para responderte)</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>© 2025 Patio Digital. Hecho con HTML, CSS y lágrimas.</p>
+            <div style="margin-top: 1rem;">
+                <a href="#" style="margin: 0 10px; text-decoration: underline;">Github</a>
+                <a href="#" style="margin: 0 10px; text-decoration: underline;">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTEGRADO (Mínimo necesario) -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('active');
+        }
+
+        // Script visual: Pequeño efecto en el Hero
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            // Aquí podrías añadir interactividad si quisieras
+        });
+    </script>
+</body>
+</html>
