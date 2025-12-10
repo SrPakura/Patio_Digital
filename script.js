@@ -1,13 +1,11 @@
-/* ========================
-   LÓGICA DEL PATO 🦆
-   ======================== */
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Revisar si el pato ya se fue (LocalStorage)
     if (localStorage.getItem('duckGone') === 'true') {
         const duck = document.getElementById('the-duck');
         if (duck) duck.style.display = 'none';
-        return; // Detener script
+        // Si el pato se fue, no ejecutamos nada más
+        return; 
     }
 
     const duck = document.getElementById('the-duck');
@@ -21,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const audioCuac = new Audio('assets/audio/cuac.mp3');
     const audioMalaje = new Audio('assets/audio/malaje.mp3');
 
-    // Animación de Sprites (Frames)
+    // Animación de Sprites
     function animateDuck() {
         currentFrame++;
         if (currentFrame > totalFrames) currentFrame = 1;
@@ -30,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startWalking() {
-        // Solo animar si no está corriendo huyendo
         if (!duck.classList.contains('duck-running')) {
             duckInterval = setInterval(animateDuck, 100);
             duck.style.animationPlayState = 'running';
@@ -44,14 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Iniciar
     startWalking();
 
-    // Hover Events (Pausar/Reanudar)
     duck.addEventListener('mouseenter', stopWalking);
     duck.addEventListener('mouseleave', startWalking);
 
-    // CLICK LOGIC (Modo Malaje)
+    // CLICK LOGIC
     duck.addEventListener('click', () => {
         clickCount++;
         
@@ -59,45 +54,31 @@ document.addEventListener('DOMContentLoaded', () => {
         clearTimeout(clickTimer);
         clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
 
-        if (clickCount < 5) {
-            // Comportamiento Normal
+        if (clickCount < 5) { // Antes era 4, ahora < 5 permite 4 clicks normales
             audioCuac.currentTime = 0;
             audioCuac.play();
-            // Efecto visual pequeño
             duck.style.transform = "scale(1.2)";
             setTimeout(() => duck.style.transform = "scale(1)", 100);
-            
         } else {
-            // MALAJE MODE ACTIVATED (5 clicks en < 2s)
-            
-            // 1. Reproducir audio
+            // MALAJE MODE (5º Click)
             audioMalaje.play();
-
-            // 2. Congelar todo (Time Stop)
-            clearInterval(duckInterval); // Pato estático en frame actual
-            duck.style.animationPlayState = 'paused'; // Deja de moverse en X
             
-            // 3. Quitar eventos para que no se le moleste más
+            // Congelar
+            clearInterval(duckInterval);
+            duck.style.animationPlayState = 'paused';
             duck.style.pointerEvents = 'none'; 
 
-            // 4. Esperar un poco y salir corriendo
+            // Esperar y correr
             setTimeout(() => {
                 duck.classList.remove('duck-walking');
-                duck.classList.add('duck-running'); // Clase de CSS que corre rápido
+                duck.classList.add('duck-running');
+                duckInterval = setInterval(animateDuck, 50); // Correr rápido
                 
-                // Reanudar animación de patas muy rápido
-                duckInterval = setInterval(animateDuck, 50); 
-                
-                // Guardar en memoria: El pato no vuelve
+                // Guardar que se fue
                 localStorage.setItem('duckGone', 'true');
                 
-                // Eliminar del DOM cuando termine de salir (aprox 2s)
-                setTimeout(() => {
-                    duck.remove();
-                }, 3000);
-
-            }, 1000); // 1 segundo de "shock" antes de correr
+                setTimeout(() => { duck.remove(); }, 3000);
+            }, 1000);
         }
     });
-
 });
