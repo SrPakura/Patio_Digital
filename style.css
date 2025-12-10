@@ -216,35 +216,42 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 .work-card:hover .card-body { opacity: 1; transform: translateY(0); }
 .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; background: #fff; color: var(--ink); border: 2px solid var(--ink); cursor: pointer; }
 
-/* TEAM ORBIT */
+/* =========================================
+   TEAM ORBIT (FIX DEFINITIVO O ME TIRO DE UN QUINTO)
+   ========================================= */
+
 .team-orbit-section {
-    /* Reducimos altura para que sea más compacto */
     padding: 4rem 0; 
-    height: 600px; /* Antes era 800px o más */
-    
+    height: 750px; /* Altura fija para dar espacio */
     position: relative; 
     overflow: hidden;
     background: #fff; 
     background-image: radial-gradient(#ccc 1px, transparent 1px); 
     background-size: 30px 30px; 
     
-    /* Flexbox para centrar todo el contenido */
+    /* Centramos el wrapper en medio de la pantalla */
     display: flex; 
-    flex-direction: column; 
     justify-content: center; 
     align-items: center;
+    flex-direction: column;
 }
 
-/* El sistema solar ocupa toda la sección pero no bloquea clicks */
-.team-system { 
-    position: absolute; 
-    top: 0; left: 0; 
-    width: 100%; height: 100%; 
-    pointer-events: none; /* Importante para poder clickar botones encima */
+/* EL PUNTO CERO (Invisible, centro del universo) */
+.solar-system-wrapper {
+    position: relative;
+    width: 0;
+    height: 0;
+    /* Esto asegura que el centro sea matemático 0,0 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* El título central (Sol) */
 .sun-title {
+    /* Ya no necesita top/left porque su padre es 0x0 y está centrado */
+    width: 300px; /* Ancho fijo para que no baile */
+    text-align: center;
     font-size: 3rem; 
     font-weight: 700; 
     background: var(--accent-yellow);
@@ -252,42 +259,50 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
     border: var(--border); 
     box-shadow: var(--shadow);
     z-index: 20; 
-    text-align: center; 
     
-    /* Centrado absoluto perfecto */
+    /* Solo necesitamos rotarlo y asegurarnos que está en medio */
     position: absolute;
-    top: 50%; left: 50%; 
-    transform: translate(-50%, -50%) rotate(-5deg);
+    transform: rotate(-5deg);
+    white-space: nowrap; /* Evita que el texto se rompa raro */
+}
+
+/* Contenedor de las órbitas */
+.team-system { 
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 0;
+    pointer-events: none; /* Para poder clickar lo que haya debajo */
 }
 
 /* Las pistas (Círculos) */
 .orbit-track { 
     position: absolute; 
-    top: 50%; left: 50%; 
-    /* El translate centra el círculo exactamente en el medio */
+    top: 0; left: 0; 
+    /* El truco maestro: translate -50% centra el círculo en el punto 0 */
     transform: translate(-50%, -50%); 
     border: 1px dashed #999; 
     border-radius: 50%; 
 }
 
-/* Definimos tamaños */
+/* Tamaños de las órbitas */
 .track-alex { width: 350px; height: 350px; animation: rotate 20s linear infinite; }
-.track-carla { width: 600px; height: 600px; animation: rotate 30s linear infinite reverse; }
-.track-tori { width: 850px; height: 850px; animation: rotate 40s linear infinite; }
+.track-carla { width: 550px; height: 550px; animation: rotate 30s linear infinite reverse; }
+.track-tori { width: 800px; height: 800px; animation: rotate 40s linear infinite; }
 
-/* Las caras */
+/* Las caras (Satélites) */
 .face-container { 
     position: absolute; 
-    top: -30px; left: 50%; 
-    /* Ajuste fino para centrar la cara en la línea */
-    transform: translateX(-50%);
+    top: -30px; /* Subimos la mitad del tamaño de la cara para que quede en la línea */
+    left: 50%; 
     width: 60px; height: 60px; 
     
-    /* Contra-rotación para que las cabezas no giren */
+    /* Centramos el pivote y anulamos la rotación */
+    transform-origin: center center;
+    transform: translateX(-50%);
     animation: counter-rotate 20s linear infinite; 
 }
 
-/* Sincronización de tiempos con sus pistas */
+/* Sincronización de tiempos */
 .track-alex .face-container { animation-duration: 20s; }
 .track-carla .face-container { animation-duration: 30s; animation-direction: reverse; }
 .track-tori .face-container { animation-duration: 40s; }
@@ -297,14 +312,14 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
     border-radius: 50%; 
     border: 3px solid var(--ink); 
     object-fit: cover; 
-    background: #fff; /* Por si la imagen tarda en cargar */
+    background: #fff;
 }
 
 /* El botón de abajo */
 .team-cta-container { 
-    position: absolute; 
-    bottom: 3rem; 
+    margin-top: 350px; /* Lo empujamos hacia abajo relativo al centro */
     z-index: 30; 
+    position: relative;
 }
 
 /* FOOTER */
