@@ -31,11 +31,6 @@ h1, h2, h3, .brand-font, .nav-item, .btn {
     letter-spacing: 0.01em;  
 }
 
-/* TEXTO TÉCNICO */
-.mono-font {
-    font-family: 'Space Grotesk', monospace; /* Fuente de dev */
-}
-
 /* =========================================
    TIPOGRAFÍA - Nuevas cosas
    ========================================= */
