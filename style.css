@@ -109,27 +109,45 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 
 .track {
     border: 2px dashed var(--ink); border-radius: 50%;
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    position: absolute; 
+    /* Quitamos el transform aquí para que la animación lo maneje todo */
 }
+
+/* ANIMACIONES DE LAS PISTAS (GIRAN) */
 .track-1 { width: 280px; height: 280px; animation: rotate 15s linear infinite; }
-.track-2 { width: 450px; height: 450px; animation: rotate 25s linear infinite reverse; }
+.track-2 { width: 450px; height: 450px; animation: rotate 25s linear infinite reverse; } /* Gira al revés */
 .track-3 { width: 650px; height: 650px; animation: rotate 35s linear infinite; }
 
+/* EL ELEMENTO QUE GIRA (Orbitador) */
 .orbiter {
-    position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
-    animation: counter-rotate 15s linear infinite; transform-origin: center 160px; /* Ajuste para estabilidad */
-    width: 60px; height: 60px; display: flex; justify-content: center; align-items: center;
+    position: absolute; 
+    top: -30px; /* Lo subimos la mitad de su tamaño para que quede centrado en la línea */
+    left: 50%; 
+    width: 60px; height: 60px; 
+    /* Centramos el punto de pivote en el propio icono */
+    transform-origin: center center; 
+    /* Contrarrestamos la rotación del padre para que el icono siempre mire arriba */
+    animation: counter-rotate 15s linear infinite; 
+    display: flex; justify-content: center; align-items: center;
 }
-/* Reajuste de origenes para evitar meneo */
-.track-1 .orbiter { transform-origin: center 160px; animation-duration: 15s; }
-.track-2 .orbiter { transform-origin: center 245px; animation-duration: 25s; animation-direction: reverse; top: -30px; }
-.track-3 .orbiter { transform-origin: center 345px; animation-duration: 35s; top: -25px; }
+
+/* Ajustamos tiempos de contra-rotación para que coincidan con su pista */
+.track-1 .orbiter { animation-duration: 15s; }
+.track-2 .orbiter { animation-duration: 25s; animation-direction: reverse; }
+.track-3 .orbiter { animation-duration: 35s; }
 
 /* SVGs Limpios */
 .svg-icon { width: 100%; height: 100%; filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.2)); }
 
-@keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
-@keyframes counter-rotate { from { transform: translateX(-50%) rotate(0deg); } to { transform: translateX(-50%) rotate(-360deg); } }
+@keyframes rotate { 
+    from { transform: rotate(0deg); } 
+    to { transform: rotate(360deg); } 
+}
+
+@keyframes counter-rotate { 
+    from { transform: translateX(-50%) rotate(0deg); } 
+    to { transform: translateX(-50%) rotate(-360deg); } 
+}
 
 /* SERVICIOS (GRID 2 COLUMNAS ARREGLADO) */
 .services-section {
