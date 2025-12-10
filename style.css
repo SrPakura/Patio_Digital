@@ -218,36 +218,94 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 
 /* TEAM ORBIT */
 .team-orbit-section {
-    padding: 6rem 0; position: relative; overflow: hidden;
+    /* Reducimos altura para que sea más compacto */
+    padding: 4rem 0; 
+    height: 600px; /* Antes era 800px o más */
+    
+    position: relative; 
+    overflow: hidden;
     background: #fff; 
-    background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 30px 30px; 
-    display: flex; flex-direction: column; justify-content: center; align-items: center; height: 800px;
+    background-image: radial-gradient(#ccc 1px, transparent 1px); 
+    background-size: 30px 30px; 
+    
+    /* Flexbox para centrar todo el contenido */
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center;
 }
 
+/* El sistema solar ocupa toda la sección pero no bloquea clicks */
+.team-system { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    pointer-events: none; /* Importante para poder clickar botones encima */
+}
+
+/* El título central (Sol) */
 .sun-title {
-    font-size: 3rem; font-weight: 700; background: var(--accent-yellow);
-    padding: 2rem; border: var(--border); box-shadow: var(--shadow);
-    z-index: 20; text-align: center; position: absolute;
-    top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-5deg);
+    font-size: 3rem; 
+    font-weight: 700; 
+    background: var(--accent-yellow);
+    padding: 2rem; 
+    border: var(--border); 
+    box-shadow: var(--shadow);
+    z-index: 20; 
+    text-align: center; 
+    
+    /* Centrado absoluto perfecto */
+    position: absolute;
+    top: 50%; left: 50%; 
+    transform: translate(-50%, -50%) rotate(-5deg);
 }
 
-.team-system { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
-.orbit-track { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px dashed #999; border-radius: 50%; }
+/* Las pistas (Círculos) */
+.orbit-track { 
+    position: absolute; 
+    top: 50%; left: 50%; 
+    /* El translate centra el círculo exactamente en el medio */
+    transform: translate(-50%, -50%); 
+    border: 1px dashed #999; 
+    border-radius: 50%; 
+}
 
-.track-alex { width: 350px; height: 350px; animation: rotate 8s linear infinite; }
-.track-carla { width: 600px; height: 600px; animation: rotate 12s linear infinite reverse; }
-.track-tori { width: 900px; height: 900px; animation: rotate 15s linear infinite; }
+/* Definimos tamaños */
+.track-alex { width: 350px; height: 350px; animation: rotate 20s linear infinite; }
+.track-carla { width: 600px; height: 600px; animation: rotate 30s linear infinite reverse; }
+.track-tori { width: 850px; height: 850px; animation: rotate 40s linear infinite; }
 
+/* Las caras */
 .face-container { 
-    position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+    position: absolute; 
+    top: -30px; left: 50%; 
+    /* Ajuste fino para centrar la cara en la línea */
+    transform: translateX(-50%);
     width: 60px; height: 60px; 
-    animation: counter-rotate 8s linear infinite; transform-origin: center center;
+    
+    /* Contra-rotación para que las cabezas no giren */
+    animation: counter-rotate 20s linear infinite; 
 }
-.track-carla .face-container { animation-duration: 12s; animation-direction: reverse; }
-.track-tori .face-container { animation-duration: 15s; }
 
-.team-face { width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--ink); object-fit: cover; }
-.team-cta-container { position: absolute; bottom: 3rem; z-index: 30; }
+/* Sincronización de tiempos con sus pistas */
+.track-alex .face-container { animation-duration: 20s; }
+.track-carla .face-container { animation-duration: 30s; animation-direction: reverse; }
+.track-tori .face-container { animation-duration: 40s; }
+
+.team-face { 
+    width: 100%; height: 100%; 
+    border-radius: 50%; 
+    border: 3px solid var(--ink); 
+    object-fit: cover; 
+    background: #fff; /* Por si la imagen tarda en cargar */
+}
+
+/* El botón de abajo */
+.team-cta-container { 
+    position: absolute; 
+    bottom: 3rem; 
+    z-index: 30; 
+}
 
 /* FOOTER */
 footer { background: var(--ink); color: #fff; padding: 4rem 0; border-top: var(--border); }
