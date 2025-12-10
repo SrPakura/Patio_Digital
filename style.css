@@ -217,95 +217,126 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; background: #fff; color: var(--ink); border: 2px solid var(--ink); cursor: pointer; }
 
 /* =========================================
-   TEAM ORBIT - SOLUCIÓN ABSOLUTA (o eso dije hace 4 versiones)
+   TEAM SECTION: ACORDEÓN (NUEVO, PORQUE ALINEAR UNA ORBITA ME ESTA ACELERANDO LA ALOPECIA)
    ========================================= */
 
-.team-orbit-section {
-    position: relative; /* Referencia para todo lo de dentro */
-    width: 100%;
-    height: 700px; /* Altura fija necesaria */
-    overflow: hidden;
-    background: #fff; 
-    background-image: radial-gradient(#ccc 1px, transparent 1px); 
-    background-size: 30px 30px; 
-}
-
-/* REGLA MAESTRA: CENTRADO ABSOLUTO */
-/* Esto centra cualquier cosa perfectamente en medio de la sección */
-.sun-title, .orbit-track {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* El orden importa: primero centramos (-50, -50), luego rotamos si hace falta */
-}
-
-/* 1. EL CARTEL (SOL) */
-.sun-title {
-    transform: translate(-50%, -50%) rotate(-5deg); /* Centrado + Rotación */
-    z-index: 20; /* Encima de las órbitas */
-    
-    font-size: 3rem; 
-    font-weight: 700; 
-    text-align: center;
-    background: var(--accent-yellow);
-    padding: 2rem; 
-    border: var(--border); 
-    box-shadow: var(--shadow);
-    white-space: nowrap;
-}
-
-/* 2. LAS ÓRBITAS (TRACKS) */
-.orbit-track {
-    transform: translate(-50%, -50%); /* Solo centrado */
-    border: 1px dashed #999; 
-    border-radius: 50%; 
-    pointer-events: none; /* Para que no molesten al click */
-}
-
-/* Tamaños de las órbitas (Aumentados para que quepan bien alrededor del cartel) */
-.track-alex { width: 400px; height: 400px; animation: rotate 20s linear infinite; }
-.track-carla { width: 600px; height: 600px; animation: rotate 30s linear infinite reverse; }
-.track-tori { width: 850px; height: 850px; animation: rotate 40s linear infinite; }
-
-/* 3. LAS CARAS (SATÉLITES) */
-.face-container { 
-    position: absolute; 
-    top: -30px; /* Pegado al borde superior de su órbita */
-    left: 50%; 
-    width: 60px; height: 60px; 
-    
-    /* Centrar pivote y contra-rotar */
-    transform-origin: center center;
-    transform: translateX(-50%); /* Centrado horizontal en la línea */
-    animation: counter-rotate 20s linear infinite; 
-    
-    pointer-events: auto; /* Reactivamos clicks en las caras si quisieras ponerles link */
-    cursor: pointer;
-    z-index: 5;
-}
-
-/* Tiempos (Iguales que antes) */
-.track-alex .face-container { animation-duration: 20s; }
-.track-carla .face-container { animation-duration: 30s; animation-direction: reverse; }
-.track-tori .face-container { animation-duration: 40s; }
-
-.team-face { 
-    width: 100%; height: 100%; 
-    border-radius: 50%; 
-    border: 3px solid var(--ink); 
-    object-fit: cover; 
+.team-accordion-section {
+    padding: 6rem 0;
     background: #fff;
-    transition: transform 0.3s;
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 30px 30px;
+    border-bottom: var(--border);
 }
-.team-face:hover { transform: scale(1.2); }
 
-/* 4. EL BOTÓN (POSICIONADO APARTE) */
-.team-cta-container { 
+/* Título estilo pegatina pero estático */
+.sun-title-static {
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--accent-yellow);
+    padding: 1rem 2rem;
+    border: var(--border);
+    box-shadow: var(--shadow);
+    transform: rotate(-2deg); /* Un toque desenfadado */
+}
+
+/* Contenedor del acordeón */
+.accordion-wrapper {
+    display: flex;
+    height: 500px; /* Altura de las tarjetas */
+    width: 100%;
+    gap: 0; /* Pegados unos a otros estilo brutalista */
+    border: var(--border);
+    box-shadow: var(--shadow);
+    background: var(--ink); /* Fondo negro por si acaso */
+}
+
+/* Paneles individuales */
+.acc-panel {
+    position: relative;
+    flex: 1; /* Todos ocupan lo mismo al principio */
+    overflow: hidden;
+    transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1); /* Animación suave */
+    cursor: pointer;
+    border-right: 3px solid var(--ink);
+}
+.acc-panel:last-child {
+    border-right: none;
+}
+
+/* EFECTO HOVER: EL PANEL CRECE */
+.acc-panel:hover {
+    flex: 3; /* El panel se hace 3 veces más grande */
+}
+
+/* Imagen de fondo */
+.acc-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s, filter 0.5s;
+    filter: grayscale(100%); /* Blanco y negro por defecto */
+}
+.acc-panel:hover .acc-img {
+    filter: grayscale(0%); /* Color al pasar el ratón */
+    transform: scale(1.05);
+}
+
+/* Capa de color semitransparente encima de la imagen (Overlay) */
+.acc-overlay {
     position: absolute;
-    bottom: 50px; /* Pegado abajo */
-    left: 50%;
-    transform: translateX(-50%); /* Centrado horizontal */
-    z-index: 30;
+    top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0.3;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+/* Colores por personaje */
+.panel-alex .acc-overlay { background: var(--accent); }
+.panel-carla .acc-overlay { background: var(--accent-blue); }
+.panel-tori .acc-overlay { background: #666; }
+
+.acc-panel:hover .acc-overlay { opacity: 0; } /* Se quita el tinte al hover */
+
+/* Texto (Nombre y Rol) */
+.acc-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+    z-index: 10;
+    transform: translateY(20px);
+    opacity: 0.8;
+    transition: 0.3s;
+}
+.acc-panel:hover .acc-info {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.acc-info h3 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    color: #fff; /* Aseguramos blanco */
+    text-shadow: 2px 2px 0 #000;
+}
+.acc-info p {
+    font-family: 'Space Grotesk', sans-serif; /* O la fuente que uses */
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent-yellow);
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 0 #000;
+}
+
+/* Botón inferior */
+.team-cta-container-static {
+    text-align: center;
+    margin-top: 4rem;
 }
 
 /* FOOTER */
