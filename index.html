@@ -17,13 +17,13 @@
     <header>
         <div class="container nav-wrapper">
             <a href="index.html" class="logo">
-                <img src="logo.svg" alt="Patio Logo" onerror="this.style.display='none'; document.getElementById('logo-txt').style.display='block'">
+                <img src="logo.svg" alt="Patio" onerror="this.style.display='none'; document.getElementById('logo-txt').style.display='block'">
                 <span id="logo-txt" style="display:none;">PATIO.</span>
             </a>
             <nav class="nav-links">
                 <a href="team.html" class="nav-item">El Equipo</a>
-                <a href="https://www.notion.so/Agencia-one-week-2c48a85f5c1381a082cced74186e35ba?p=2c58a85f5c138053a243ef4b5ac3a3c1&pm=s" target="_blank" class="nav-item ext-link">Notion Interno ↗</a>
-                <a href="https://docs.google.com/spreadsheets/d/1PncjFOzsQ0GMAAVbnwxLNP6JAW-ZfLkmE1ho0Lqjjp8/edit?usp=sharing" target="_blank" class="nav-item ext-link">Control Gastos ↗</a>
+                <a href="https://www.notion.so" target="_blank" class="nav-item ext-link">Notion Interno ↗</a>
+                <a href="https://docs.google.com" target="_blank" class="nav-item ext-link">Control Gastos ↗</a>
                 <a href="#contacto" class="btn">Empezar Proyecto</a>
             </nav>
         </div>
@@ -33,7 +33,7 @@
     <section class="hero">
         <div class="container hero-grid">
             
-            <!-- TEXTO (Z-Index alto para estar por encima) -->
+            <!-- TEXTO -->
             <div class="hero-text">
                 <h1>Diseño productos digitales <span class="highlight-marker">sin drama</span>.</h1>
                 <p>Agencia de diseño y desarrollo web que entiende que tu usuario no lee, escanea. Sin plantillas, sin excusas y con mucho café.</p>
@@ -43,39 +43,40 @@
                 </div>
             </div>
 
-            <!-- SISTEMA SOLAR (3 Órbitas, Detrás del texto) -->
+            <!-- SISTEMA SOLAR (LIMPIO) -->
             <div class="orbit-container">
                 <!-- Sol Central Naranja -->
                 <div class="planet-center"></div> 
                 
                 <!-- Pista 1: Corazón -->
                 <div class="track track-1">
-                    <div class="orbiter-wrapper">
-                        <img src="assets/pop/cora.svg" class="raw-svg shadow-blue" alt="Like">
+                    <div class="orbiter">
+                        <!-- Sin clase 'raw-svg', imagen limpia -->
+                        <img src="assets/pop/cora.svg" alt="Like" style="width: 40px;">
                     </div>
                 </div>
 
                 <!-- Pista 2: Sol -->
                 <div class="track track-2">
-                    <div class="orbiter-wrapper">
-                        <img src="assets/pop/sun.svg" class="raw-svg shadow-black" alt="Sun">
+                    <div class="orbiter">
+                        <img src="assets/pop/sun.svg" alt="Sun" style="width: 60px;">
                     </div>
                 </div>
 
                 <!-- Pista 3: Ojo -->
                 <div class="track track-3">
-                    <div class="orbiter-wrapper">
-                        <img src="assets/pop/eye.svg" class="raw-svg shadow-orange" alt="Vision">
+                    <div class="orbiter">
+                        <img src="assets/pop/eye.svg" alt="Vision" style="width: 50px;">
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- EL PATO (Gigante y recuperado) -->
+        <!-- EL PATO -->
         <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato">
     </section>
 
-    <!-- SERVICIOS (Dark Mode Bento - Restaurado) -->
+    <!-- SERVICIOS (BENTO GRID RESTAURADO) -->
     <section class="services-section">
         <div class="container">
             <h2 class="section-title">NUESTROS SERVICIOS</h2>
@@ -93,7 +94,7 @@
                     <p>Diseño visual con carácter y accesibilidad que enamora.</p>
                 </div>
 
-                <!-- Caja Terminal -->
+                <!-- Caja Negra -->
                 <div class="bento-box box-dev">
                     <h3 class="mono-font">> 03_DEV_MODE</h3>
                     <p>> Código limpio.<br>> Google ama esto.</p>
@@ -103,13 +104,13 @@
         </div>
     </section>
 
-    <!-- SELECTED WORK (Colores y Botón Extra) -->
+    <!-- SELECTED WORK (TEXTOS RECUPERADOS) -->
     <section class="work-section" id="work">
         <div class="container">
             <h2 class="work-title">SELECTED WORK.</h2>
             
             <div class="work-gallery">
-                <!-- PROYECTO 1: Netflix (Naranja) -->
+                <!-- PROYECTO 1 -->
                 <div class="work-card card-netflix">
                     <div class="card-content">
                         <div class="card-header">
@@ -117,13 +118,13 @@
                             <h2>Netflix AI Builder</h2>
                         </div>
                         <div class="card-body">
-                            <p>Plataforma para generación de assets.</p>
+                            <p>Plataforma para generación de assets mediante IA para optimizar el flujo de trabajo de los editores.</p>
                             <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROYECTO 2: RoomSync (Azul Eléctrico) -->
+                <!-- PROYECTO 2 -->
                 <div class="work-card card-roomsync">
                     <div class="card-content">
                         <div class="card-header">
@@ -131,13 +132,13 @@
                             <h2>RoomSync+</h2>
                         </div>
                         <div class="card-body">
-                            <p>Gestión de compañeros de piso.</p>
+                            <p>App para gestión de convivencia en pisos compartidos, pagos y tareas sin peleas.</p>
                             <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROYECTO 3: Crypto (Amarillo) -->
+                <!-- PROYECTO 3 -->
                 <div class="work-card card-crypto">
                     <div class="card-content">
                         <div class="card-header">
@@ -145,21 +146,20 @@
                             <h2>CryptoDash</h2>
                         </div>
                         <div class="card-body">
-                            <p>DeFi para humanos normales.</p>
+                            <p>Dashboard simplificado para gestión de carteras DeFi con enfoque en accesibilidad.</p>
                             <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Botón Ver Todos -->
             <div style="text-align: center; margin-top: 3rem;">
                 <a href="#" class="btn btn-wide">Ver todos los trabajos ↓</a>
             </div>
         </div>
     </section>
 
-    <!-- TEAM (Órbitas arregladas y Botón) -->
+    <!-- TEAM (RUTAS CORREGIDAS + FONDO PUNTOS) -->
     <section class="team-orbit-section">
         <div class="sun-title">CEREBROS<br>& PÍXELES</div>
 
@@ -167,25 +167,24 @@
             <!-- Pista 1: Alex -->
             <div class="orbit-track track-alex">
                 <div class="face-container">
-                    <!-- Asegúrate de que las imágenes están en la carpeta raíz o assets según corresponda -->
-                    <img src="assets/image_Alex.jpg" alt="Alex" class="team-face" onerror="this.src='https://placehold.co/100?text=ALX'">
+                    <!-- Ruta corregida a raíz -->
+                    <img src="image_Alex.jpg" alt="Alex" class="team-face" onerror="this.src='https://placehold.co/100?text=ALX'">
                 </div>
             </div>
             <!-- Pista 2: Carla -->
             <div class="orbit-track track-carla">
                 <div class="face-container">
-                    <img src="assets/image_Carla.jpg" alt="Carla" class="team-face" onerror="this.src='https://placehold.co/100?text=CRL'">
+                    <img src="image_Carla.jpg" alt="Carla" class="team-face" onerror="this.src='https://placehold.co/100?text=CRL'">
                 </div>
             </div>
             <!-- Pista 3: Tori -->
             <div class="orbit-track track-tori">
                 <div class="face-container">
-                    <img src="assets/image_Tori.jpg" alt="Tori" class="team-face" onerror="this.src='https://placehold.co/100?text=TOR'">
+                    <img src="image_Tori.jpg" alt="Tori" class="team-face" onerror="this.src='https://placehold.co/100?text=TOR'">
                 </div>
             </div>
         </div>
 
-        <!-- Botón Equipo (Flotando abajo) -->
         <div class="team-cta-container">
             <a href="team.html" class="btn">Conoce a los Culpables</a>
         </div>
@@ -200,7 +199,6 @@
             </div>
             <div class="footer-meta">
                 <p>© 2025 Patio Digital.</p>
-                <p>Hecho con HTML, CSS y lágrimas.</p>
                 <div class="socials">
                     <a href="#">Github</a>
                     <a href="#">LinkedIn</a>
