@@ -3,11 +3,10 @@
    ========================================= */
 
 :root {
-    --bg: #F0F0F0;
     --bg-light: #FAFAFA;
     --ink: #050505;
     --accent: #FF4500; /* Naranja */
-    --accent-blue: #2A00FF; /* Azul Eléctrico */
+    --accent-blue: #2A00FF; 
     --accent-yellow: #FFD700; 
     --code-green: #00FF41;  
     
@@ -33,6 +32,22 @@ h1, h2, h3, .brand-font, .nav-item, .btn {
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 2rem; }
 
+/* HEADER FIX */
+header {
+    border-bottom: var(--border); background: #fff; height: 90px;
+    display: flex; align-items: center; position: sticky; top: 0; z-index: 1000;
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo { height: 40px; display: flex; align-items: center; font-weight: 800; font-size: 1.5rem; text-decoration: none; color: var(--ink); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+
+/* Enlaces del Nav forzados a negro */
+.nav-item { color: var(--ink) !important; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+.nav-item:visited { color: var(--ink); }
+.nav-item:hover { color: var(--accent) !important; text-decoration: underline; }
+.ext-link { opacity: 0.6; }
+.ext-link:hover { opacity: 1; }
+
 /* BOTONES */
 .btn {
     display: inline-block; background: var(--ink); color: #fff;
@@ -47,25 +62,14 @@ h1, h2, h3, .brand-font, .nav-item, .btn {
 .btn-outline:hover { background: var(--ink); color: #fff; }
 .btn-wide { width: 100%; max-width: 400px; text-align: center; }
 
-/* HEADER */
-header {
-    border-bottom: var(--border); background: #fff; height: 90px;
-    display: flex; align-items: center; position: sticky; top: 0; z-index: 1000;
-}
-.nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
-.logo { height: 40px; display: flex; align-items: center; font-weight: 800; font-size: 1.5rem; }
-.logo img { height: 100%; width: auto; }
-.nav-links { display: flex; gap: 2rem; align-items: center; }
-.nav-item:hover { color: var(--accent); text-decoration: underline; }
-.ext-link { opacity: 0.6; font-size: 0.85rem; }
-
 /* HERO SECTION */
 .hero {
     position: relative; min-height: 90vh; border-bottom: var(--border);
     overflow: hidden; display: flex; align-items: center;
-    /* FONDO: Trama + Tinte Naranja (15%) */
+    /* Fondo Trama + Tinte Naranja Suave */
+    background-color: #f0f0f0;
     background-image: 
-        linear-gradient(rgba(255, 69, 0, 0.15), rgba(255, 69, 0, 0.15)),
+        linear-gradient(rgba(255, 69, 0, 0.1), rgba(255, 69, 0, 0.1)),
         url('assets/pop/trama.svg');
     background-size: cover; background-position: center;
 }
@@ -76,7 +80,7 @@ header {
 }
 
 .hero-text {
-    position: relative; z-index: 20; /* POR ENCIMA DE LOS PLANETAS */
+    position: relative; z-index: 20; 
     background: rgba(255,255,255,0.95);
     padding: 3rem; border: var(--border); box-shadow: var(--shadow);
 }
@@ -92,7 +96,7 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 .orbit-container {
     position: relative; width: 100%; height: 600px;
     display: flex; justify-content: center; align-items: center;
-    z-index: 1; /* POR DETRÁS DEL TEXTO */
+    z-index: 1; 
 }
 
 .planet-center {
@@ -107,48 +111,65 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 .track {
     border: 2px dashed var(--ink); border-radius: 50%;
     position: absolute;
-    display: flex; justify-content: center; align-items: center;
+    /* Centrado absoluto para evitar wobble */
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
 }
 .track-1 { width: 280px; height: 280px; animation: rotate 15s linear infinite; }
 .track-2 { width: 450px; height: 450px; animation: rotate 25s linear infinite reverse; }
 .track-3 { width: 650px; height: 650px; animation: rotate 35s linear infinite; }
 
-/* Wrapper para contra-rotar el SVG y que siempre mire arriba */
-.orbiter-wrapper {
-    position: absolute; top: -30px; /* Posición en la órbita */
-    width: 60px; height: 60px;
+/* Orbiter (El objeto que gira) */
+.orbiter {
+    position: absolute;
+    top: -20px; left: 50%; /* Posicionado arriba */
+    transform: translateX(-50%); /* Centrado en la línea */
+    /* Contra-rotación para mantener el icono recto */
     animation: counter-rotate 15s linear infinite;
+    transform-origin: center center;
 }
-.track-2 .orbiter-wrapper { animation: counter-rotate 25s linear infinite reverse; top: -40px; width: 80px; height: 80px;}
-.track-3 .orbiter-wrapper { animation: counter-rotate 35s linear infinite; top: -35px; width: 70px; height: 70px;}
+/* Sincronizar tiempos de contra-rotación */
+.track-1 .orbiter { animation-duration: 15s; }
+.track-2 .orbiter { animation-duration: 25s; animation-direction: reverse; top: -30px; }
+.track-3 .orbiter { animation-duration: 35s; top: -25px; }
 
-/* SVGs CRUDOS + SOMBRAS DE COLOR */
-.raw-svg { width: 100%; height: 100%; }
-.shadow-blue { filter: drop-shadow(5px 5px 0px var(--accent-blue)); }
-.shadow-black { filter: drop-shadow(5px 5px 0px var(--ink)); }
-.shadow-orange { filter: drop-shadow(5px 5px 0px var(--accent)); }
+@keyframes rotate { from { transform: translate(-50%, -50%) rotate(0deg); } to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes counter-rotate { from { transform: translateX(-50%) rotate(0deg); } to { transform: translateX(-50%) rotate(-360deg); } }
 
-@keyframes rotate { 100% { transform: rotate(360deg); } }
-@keyframes counter-rotate { 100% { transform: rotate(-360deg); } }
 
-/* SERVICIOS (DARK MODE RESTAURADO) */
+/* SERVICIOS (BENTO GRID RESTAURADO) */
 .services-section {
     background-color: var(--ink); color: #fff; padding: 8rem 0;
-    background-image: radial-gradient(#333 1px, transparent 1px); background-size: 30px 30px;
+    /* Trama de puntos blanca sobre negro */
+    background-image: radial-gradient(#444 1px, transparent 1px); background-size: 30px 30px;
 }
 .section-title { font-size: 4rem; margin-bottom: 4rem; color: #fff; }
-.bento-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 350px; gap: 2rem; }
-.bento-box { border: 3px solid #fff; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; background: #000; }
-.box-strategy { background: var(--accent); border-color: var(--ink); color: var(--ink); }
-.box-ui { background: #fff; color: var(--ink); border-color: var(--ink); }
-.box-dev { background: #111; color: var(--code-green); border-color: #333; }
+
+.bento-grid { 
+    display: grid; 
+    grid-template-columns: 1.5fr 1fr 1fr; /* Estructura 3 columnas */
+    grid-template-rows: 400px; /* Altura fija */
+    gap: 2rem; 
+}
+
+.bento-box { 
+    border: 3px solid #fff; 
+    padding: 2.5rem; 
+    display: flex; flex-direction: column; justify-content: space-between; 
+    transition: 0.3s; 
+}
+
+.box-strategy { background: var(--accent); border-color: var(--ink); color: var(--ink); } /* Naranja */
+.box-ui { background: #fff; color: var(--ink); border-color: var(--ink); } /* Blanco */
+.box-dev { background: #111; color: var(--code-green); border-color: #333; } /* Negro */
+
 .bento-box:hover { transform: translate(-5px, -5px); box-shadow: 8px 8px 0 rgba(255,255,255,0.2); }
 .box-strategy:hover { box-shadow: 8px 8px 0 #fff; }
 
-/* SELECTED WORK (COLORES VIVOS + OVERFLOW FIX) */
+
+/* SELECTED WORK */
 .work-section { padding: 8rem 0; background: #fff; border-bottom: var(--border); }
 .work-title { font-size: 4rem; margin-bottom: 3rem; color: var(--ink); }
-.work-gallery { display: flex; gap: 1.5rem; height: 500px; margin-bottom: 2rem; }
+.work-gallery { display: flex; gap: 1.5rem; height: 550px; margin-bottom: 2rem; }
 
 .work-card {
     flex: 1; position: relative; border: var(--border);
@@ -157,21 +178,18 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 }
 .work-card:hover { flex: 3; }
 
-/* COLORES DE CARDS */
-.card-netflix { background: var(--accent); color: var(--ink); } /* Naranja */
-.card-roomsync { background: var(--accent-blue); color: #fff; } /* Azul */
-.card-crypto { background: var(--accent-yellow); color: var(--ink); } /* Amarillo */
+/* Colores */
+.card-netflix { background: var(--accent); color: var(--ink); }
+.card-roomsync { background: var(--accent-blue); color: #fff; }
+.card-crypto { background: var(--accent-yellow); color: var(--ink); }
 
 .card-content {
     padding: 2rem; height: 100%;
     display: flex; flex-direction: column; justify-content: space-between;
-    min-width: 350px; /* Evita rotura de texto */
+    min-width: 350px; /* Ancho mínimo para que no se rompa el texto */
 }
 
-.card-header h2 {
-    font-size: 3rem; line-height: 0.95; margin-top: 1rem;
-    word-break: break-word; /* Evita que se salga */
-}
+.card-header h2 { font-size: 3rem; line-height: 0.95; margin-top: 1rem; }
 .p-tag {
     font-weight: 700; text-transform: uppercase; border: 2px solid var(--ink);
     padding: 4px 8px; display: inline-block; background: rgba(255,255,255,0.9); color: var(--ink);
@@ -180,30 +198,38 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 
 .card-body { opacity: 0; transform: translateY(20px); transition: 0.4s 0.1s; }
 .work-card:hover .card-body { opacity: 1; transform: translateY(0); }
-.btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; background: #fff; color: var(--ink); border: 2px solid var(--ink); }
+.btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; background: #fff; color: var(--ink); border: 2px solid var(--ink); cursor: pointer; }
+
 
 /* TEAM ORBIT */
 .team-orbit-section {
     padding: 6rem 0; position: relative; overflow: hidden;
-    background: #fff; display: flex; flex-direction: column;
-    justify-content: center; align-items: center; height: 700px;
+    background: #fff; 
+    background-image: radial-gradient(#ccc 1px, transparent 1px); background-size: 30px 30px; /* TRAMA PUNTOS RECUPERADA */
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center; height: 800px;
 }
 
 .sun-title {
     font-size: 3rem; font-weight: 700; background: var(--accent-yellow);
     padding: 2rem; border: var(--border); box-shadow: var(--shadow);
-    z-index: 20; transform: rotate(-5deg); text-align: center; position: absolute;
+    z-index: 20; text-align: center; position: absolute;
     top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-5deg);
 }
 
 .team-system { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
-.orbit-track { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px dashed #ccc; border-radius: 50%; }
+.orbit-track { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border: 1px dashed #999; border-radius: 50%; }
 
 .track-alex { width: 350px; height: 350px; animation: rotate 8s linear infinite; }
 .track-carla { width: 600px; height: 600px; animation: rotate 12s linear infinite reverse; }
 .track-tori { width: 900px; height: 900px; animation: rotate 15s linear infinite; }
 
-.face-container { position: absolute; top: -30px; left: 50%; width: 60px; height: 60px; animation: counter-rotate 8s linear infinite; }
+.face-container { 
+    position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+    width: 60px; height: 60px; 
+    animation: counter-rotate 8s linear infinite; 
+    transform-origin: center center;
+}
 .track-carla .face-container { animation-duration: 12s; animation-direction: reverse; }
 .track-tori .face-container { animation-duration: 15s; }
 
@@ -217,11 +243,13 @@ footer { background: var(--ink); color: #fff; padding: 4rem 0; border-top: var(-
 .footer-meta { text-align: right; }
 .socials a { color: #fff; margin-left: 1rem; }
 
-/* EL PATO (GIGANTE) */
+/* EL PATO (Z-INDEX FIX) */
 #the-duck {
     position: absolute; bottom: -5px; left: -150px;
-    width: 128px; height: 128px; /* 128px de puro pato */
-    image-rendering: pixelated; z-index: 100; cursor: pointer;
+    width: 128px; height: 128px; 
+    image-rendering: pixelated; 
+    z-index: 9999; /* Máxima prioridad */
+    cursor: pointer;
 }
 .duck-walking { animation: walkAcross 20s linear infinite; }
 .duck-running { animation: exitStage 2s linear forwards !important; }
