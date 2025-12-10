@@ -3,700 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patio Digital | Product Agency</title>
+    <title>Patio Digital | Diseño Sin Drama</title>
     
-    <!-- FUENTES (Fontshare CDN) -->
+    <!-- FUENTES -->
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
-
-    <style>
-        /* =========================================
-           ESTILO: NEO-BRUTALISM + POP ART
-           ========================================= */
-        
-        :root {
-            --bg: #FAFAFA;          
-            --ink: #050505;         /* Negro casi puro */
-            --accent: #FF4500;      /* Naranja Internacional */
-            --accent-yellow: #FFD700; 
-            --code-green: #00FF41;  
-            
-            --border: 3px solid var(--ink);
-            --border-light: 1px solid rgba(255,255,255,0.2);
-            --shadow: 8px 8px 0px 0px var(--ink);
-            --shadow-hover: 4px 4px 0px 0px var(--ink);
-            --container: 1400px;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background-color: var(--bg);
-            color: var(--ink);
-            font-family: 'Satoshi', sans-serif;
-            overflow-x: hidden;
-            background-image: radial-gradient(#ccc 1px, transparent 1px);
-            background-size: 30px 30px; 
-        }
-
-        /* TIPOGRAFÍA */
-        h1, h2, h3, .brand-font, .nav-link, .btn {
-            font-family: 'Clash Display', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* UTILIDADES */
-        .container {
-            max-width: var(--container);
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* BOTONES */
-        .btn {
-            display: inline-block;
-            background: var(--ink);
-            color: #fff;
-            padding: 1rem 2rem;
-            font-weight: 600;
-            font-size: 1rem;
-            border: 2px solid var(--ink);
-            text-decoration: none;
-            transition: 0.2s;
-            cursor: pointer;
-        }
-        .btn:hover {
-            background: var(--accent);
-            color: var(--ink);
-            box-shadow: 4px 4px 0 var(--ink);
-            transform: translate(-2px, -2px);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--ink);
-        }
-        .btn-outline:hover {
-            background: var(--ink);
-            color: #fff;
-        }
-
-        /* ====================
-           HEADER (Restaurado)
-           ==================== */
-        header {
-            border-bottom: var(--border);
-            background: var(--bg);
-            height: 90px;
-            display: flex;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .nav-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
-        .logo {
-            height: 40px;
-            display: flex;
-            align-items: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-        }
-        .logo img { height: 100%; width: auto; }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .nav-item {
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
-        }
-        .nav-item:hover { text-decoration: underline; color: var(--accent); }
-        
-        /* Links externos (Notion/Gastos) */
-        .ext-link { opacity: 0.6; font-size: 0.85rem; }
-        .ext-link:hover { opacity: 1; }
-
-        /* ====================
-           HERO SECTION (Reajustado)
-           ==================== */
-        .hero {
-            position: relative;
-            min-height: 90vh;
-            border-bottom: var(--border);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr; /* Texto más espacio, órbita derecha */
-            gap: 2rem;
-            align-items: center;
-            height: 100%;
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 10;
-            background: rgba(250,250,250,0.9);
-            padding: 3rem;
-            border: var(--border);
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(5px);
-        }
-
-        h1 {
-            font-size: clamp(3.5rem, 6vw, 5.5rem);
-            line-height: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .highlight-marker {
-            background: linear-gradient(120deg, var(--accent-yellow) 0%, var(--accent-yellow) 100%);
-            background-repeat: no-repeat;
-            background-size: 100% 30%;
-            background-position: 0 85%;
-            display: inline;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        /* SISTEMA SOLAR (Lado Derecho) */
-        .orbit-container {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Debug: border: 1px dashed red; */
-        }
-
-        /* Planeta Central */
-        .planet {
-            width: 120px; height: 120px;
-            background: var(--accent);
-            border: var(--border);
-            border-radius: 50%;
-            position: absolute;
-            z-index: 2;
-        }
-
-        /* Anillo 1 */
-        .track-1 {
-            width: 350px; height: 350px;
-            border: 2px dashed var(--ink);
-            border-radius: 50%;
-            position: absolute;
-            animation: rotate 25s linear infinite;
-        }
-
-        /* Anillo 2 (Más grande) */
-        .track-2 {
-            width: 550px; height: 550px;
-            border: 1px dotted var(--ink);
-            border-radius: 50%;
-            position: absolute;
-            animation: rotate 40s linear infinite reverse; /* Gira al revés */
-        }
-
-        .satellite {
-            position: absolute;
-            top: -25px; left: 50%;
-            width: 60px; height: 60px;
-            background: #fff;
-            border: var(--border);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
-            animation: counter-rotate 25s linear infinite; /* Para que el icono no gire */
-        }
-
-        /* Corrección rotación iconos */
-        .track-1 .satellite { animation-duration: 25s; }
-        .track-2 .satellite { animation-duration: 40s; animation-direction: reverse; }
-
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-        @keyframes counter-rotate { 100% { transform: rotate(-360deg); } }
-
-        /* ====================
-           SERVICIOS (Dark Mode)
-           ==================== */
-        .services-section {
-            background-color: var(--ink);
-            color: #fff;
-            padding: 8rem 0;
-            background-image: radial-gradient(#333 1px, transparent 1px);
-            background-size: 30px 30px;
-        }
-
-        .section-title {
-            font-size: 4rem;
-            margin-bottom: 4rem;
-            color: #fff;
-        }
-
-        /* Estilos del Bento (Reutilizados pero adaptados a Dark) */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            grid-template-rows: 350px 350px;
-            gap: 2rem;
-        }
-
-        .bento-box {
-            border: 3px solid #fff; /* Borde blanco */
-            padding: 2.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.3s;
-            background: #000;
-        }
-
-        .box-strategy {
-            grid-column: 1 / 2; grid-row: 1 / 3;
-            background: var(--accent);
-            border: 3px solid var(--ink); /* Excepción: borde negro en fondo naranja */
-            color: var(--ink);
-        }
-        
-        .box-ui {
-            grid-column: 2 / 4;
-            background: #fff;
-            color: var(--ink);
-            border: 3px solid var(--ink);
-        }
-
-        .box-dev {
-            grid-column: 2 / 4;
-            background: #111;
-            color: var(--code-green);
-            font-family: monospace;
-            border: 1px solid #333;
-        }
-
-        .bento-box:hover {
-            transform: translate(-5px, -5px);
-            box-shadow: 8px 8px 0 rgba(255,255,255,0.2);
-        }
-        .box-strategy:hover, .box-ui:hover {
-            box-shadow: 8px 8px 0 #fff; /* Sombra blanca para contraste */
-        }
-
-        /* ====================
-           SELECTED WORK (Gallery Grid)
-           ==================== */
-        .work-section {
-            padding: 8rem 0;
-            background: var(--bg);
-            border-bottom: var(--border);
-        }
-
-        .work-title { font-size: 4rem; margin-bottom: 3rem; color: var(--ink); }
-
-        .work-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .project-card {
-            border: var(--border);
-            background: #fff;
-            box-shadow: var(--shadow);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: var(--ink);
-            display: block;
-        }
-
-        .project-img {
-            height: 300px;
-            width: 100%;
-            background: #eee;
-            border-bottom: var(--border);
-            overflow: hidden;
-        }
-        .project-img img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: 0.5s;
-            filter: grayscale(100%);
-        }
-
-        .project-info { padding: 1.5rem; }
-        .p-tags { font-size: 0.8rem; text-transform: uppercase; opacity: 0.6; font-weight: 700; }
-        .p-name { font-size: 2rem; font-weight: 700; margin-top: 0.5rem; font-family: 'Clash Display'; }
-
-        .project-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0 var(--ink);
-        }
-        .project-card:hover .project-img img {
-            filter: grayscale(0%);
-            transform: scale(1.1);
-        }
-
-        /* ====================
-           TEAM ORBIT SECTION (Cerebros y Pixeles)
-           ==================== */
-        .team-orbit-section {
-            padding: 10rem 0;
-            position: relative;
-            overflow: hidden;
-            background: #fff;
-            text-align: center;
-        }
-
-        .team-solar-system {
-            width: 800px; height: 800px;
-            margin: 0 auto;
-            position: relative;
-            /* Debug: border: 1px solid red; */
-            display: flex; justify-content: center; align-items: center;
-        }
-
-        .sun-title {
-            position: absolute;
-            z-index: 10;
-            font-size: 3rem;
-            line-height: 1;
-            font-weight: 700;
-            background: var(--accent-yellow);
-            padding: 2rem;
-            border: var(--border);
-            box-shadow: var(--shadow);
-            transform: rotate(-5deg);
-        }
-
-        .team-track {
-            position: absolute;
-            border: 2px dashed #ccc;
-            border-radius: 50%;
-            animation: rotate 30s linear infinite;
-        }
-        
-        .track-inner { width: 400px; height: 400px; animation-duration: 20s; }
-        .track-outer { width: 700px; height: 700px; animation-duration: 35s; animation-direction: reverse; }
-
-        .team-face {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            border: var(--border);
-            overflow: hidden;
-            position: absolute;
-            top: -40px; left: 50%; margin-left: -40px;
-            animation: counter-rotate 30s linear infinite; /* Mismo tiempo que el track */
-            transition: 0.3s;
-        }
-        
-        .track-inner .team-face { animation-duration: 20s; }
-        .track-outer .team-face { animation-duration: 35s; animation-direction: reverse; }
-
-        .team-face img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* Efecto Hover: Parar sistema solar */
-        .team-solar-system:hover .team-track,
-        .team-solar-system:hover .team-face {
-            animation-play-state: paused;
-        }
-        
-        .team-face:hover { transform: scale(1.5) !important; z-index: 20; border-color: var(--accent); }
-
-
-        /* ====================
-           FOOTER
-           ==================== */
-        footer {
-            background: var(--ink);
-            color: #fff;
-            padding: 4rem 2rem;
-            border-top: var(--border);
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            align-items: center;
-        }
-        .footer-email {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
-        .footer-email:hover { color: var(--accent); }
-
-        /* ====================
-           EL PATO (Igual que antes)
-           ==================== */
-        #the-duck {
-            position: absolute;
-            bottom: -3px; left: -100px;
-            width: 64px; height: 64px;
-            image-rendering: pixelated;
-            z-index: 100;
-            cursor: pointer;
-        }
-        .duck-walking { animation: walkAcross 20s linear infinite; }
-        .duck-running { animation: walkAcross 4s linear forwards !important; }
-
-        @keyframes walkAcross {
-            0% { left: -100px; transform: scaleX(1); }
-            49% { transform: scaleX(1); }
-            50% { left: 100vw; transform: scaleX(-1); }
-            100% { left: -100px; transform: scaleX(-1); }
-        }
-
-    </style>
+    
+    <!-- CSS VINCULADO -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <!-- HEADER -->
     <header>
         <div class="container nav-wrapper">
-            <!-- LOGO -->
             <a href="index.html" class="logo">
                 <img src="logo.svg" alt="Patio Logo" onerror="this.style.display='none'; document.getElementById('logo-txt').style.display='block'">
                 <span id="logo-txt" style="display:none;">PATIO.</span>
             </a>
-
-            <!-- NAV LINKS -->
             <nav class="nav-links">
                 <a href="team.html" class="nav-item">El Equipo</a>
-                <a href="#" class="nav-item ext-link">Notion Interno ↗</a>
-                <a href="#" class="nav-item ext-link">Control Gastos ↗</a>
+                <a href="https://www.notion.so/Agencia-one-week-2c48a85f5c1381a082cced74186e35ba?p=2c58a85f5c138053a243ef4b5ac3a3c1&pm=s" target="_blank" class="nav-item ext-link">Notion Interno ↗</a>
+                <a href="https://docs.google.com/spreadsheets/d/1PncjFOzsQ0GMAAVbnwxLNP6JAW-ZfLkmE1ho0Lqjjp8/edit?usp=sharing" target="_blank" class="nav-item ext-link">Control Gastos ↗</a>
                 <a href="#contacto" class="btn">Empezar Proyecto</a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Gris + Trama + SVGs) -->
     <section class="hero">
         <div class="container hero-grid">
-            
-            <!-- COLUMNA IZQUIERDA: TEXTO -->
+            <!-- TEXTO -->
             <div class="hero-text">
                 <h1>Diseño productos digitales <span class="highlight-marker">sin drama</span>.</h1>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #333;">
-                    Agencia de diseño y desarrollo web que entiende que tu usuario no lee, escanea. Sin plantillas, sin excusas y con mucho café.
-                </p>
+                <p>Agencia de diseño y desarrollo web que entiende que tu usuario no lee, escanea. Sin plantillas, sin excusas y con mucho café.</p>
                 <div class="hero-buttons">
                     <a href="#work" class="btn">Ver Portfolio</a>
                     <a href="team.html" class="btn btn-outline">Conoce al Equipo</a>
                 </div>
             </div>
 
-            <!-- COLUMNA DERECHA: ÓRBITA GRANDE -->
+            <!-- ÓRBITA CON SVGs -->
             <div class="orbit-container">
-                <!-- Sol -->
-                <div class="planet"></div> 
+                <!-- Sol Central -->
+                <div class="planet-center"></div> 
                 
-                <!-- Anillo 1 (Elementos pequeños) -->
+                <!-- Anillo 1 (Corazón) -->
                 <div class="track-1">
-                    <div class="satellite" style="background: var(--accent-yellow);">💾</div>
+                    <img src="assets/pop/cora.svg" class="satellite-svg svg-white" alt="Like">
                 </div>
 
-                <!-- Anillo 2 (Elementos más grandes) -->
+                <!-- Anillo 2 (Sol y Ojo) -->
                 <div class="track-2">
-                    <div class="satellite" style="background: blue; color: white;">👁️</div>
-                    <div class="satellite" style="background: #fff; top: auto; bottom: -25px; animation-delay: -20s;">⚡</div>
+                    <img src="assets/pop/sun.svg" class="satellite-svg svg-yellow" alt="Sun">
+                    <img src="assets/pop/eye.svg" class="satellite-svg svg-blue" style="animation-delay: -20s;" alt="Vision">
                 </div>
             </div>
-
         </div>
 
-        <!-- EL PATO -->
+        <!-- EL PATO (JS lo controla) -->
         <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato">
     </section>
 
-    <!-- SERVICIOS (BLACK MODE) -->
+    <!-- SERVICIOS -->
     <section class="services-section">
         <div class="container">
             <h2 class="section-title">NUESTROS SERVICIOS</h2>
-            
             <div class="bento-grid">
-                <!-- Caja Naranja -->
                 <div class="bento-box box-strategy">
-                    <h3 style="font-size: 2.5rem;">01.<br>Estrategia & Caos</h3>
+                    <h3>01.<br>Estrategia & Caos</h3>
                     <p>Convertimos ideas vagas en roadmaps sólidos antes de abrir Figma.</p>
                 </div>
-
-                <!-- Caja Blanca -->
                 <div class="bento-box box-ui">
-                    <h3 style="font-size: 2rem;">02. UI/UX Radical</h3>
+                    <h3>02. UI/UX Radical</h3>
                     <p>Diseño visual con carácter y accesibilidad que enamora.</p>
                 </div>
-
-                <!-- Caja Terminal -->
                 <div class="bento-box box-dev">
-                    <h3 style="font-family: monospace;">> 03_DEV_MODE</h3>
-                    <p>> Código limpio.<br>> Google ama esto.<br>> Tu competencia llora.</p>
-                    <span style="font-size: 3rem; text-align: right; color: var(--code-green);">{ }</span>
+                    <h3 class="mono-font">> 03_DEV_MODE</h3>
+                    <p>> Código limpio.<br>> Google ama esto.</p>
+                    <span class="code-bracket">{ }</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SELECTED WORK (BENTO / GRID STYLE) -->
+    <!-- SELECTED WORK (Acordeón Expandible) -->
     <section class="work-section" id="work">
         <div class="container">
             <h2 class="work-title">SELECTED WORK.</h2>
+            
+            <div class="work-gallery">
+                <!-- PROYECTO 1: NETFLIX (Naranja) -->
+                <div class="work-card card-netflix">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="p-tag">AI / Streaming</span>
+                            <h2>Netflix AI Builder</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Plataforma interna para generación de assets mediante IA.</p>
+                            <ul>
+                                <li>Generación en tiempo real</li>
+                                <li>Optimización de ancho de banda</li>
+                                <li>Interfaz adaptativa</li>
+                            </ul>
+                            <button class="btn btn-small">Ver Caso Completo</button>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="work-grid">
-                <!-- Proyecto 1 -->
-                <a href="#" class="project-card">
-                    <div class="project-img">
-                        <!-- Pon aquí tu imagen de cover -->
-                        <img src="img/netflix-cover.jpg" alt="Netflix AI" onerror="this.src='https://placehold.co/600x400/FF4500/FFF?text=NETFLIX'">
+                <!-- PROYECTO 2: ROOMSYNC (Gris) -->
+                <div class="work-card card-roomsync">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="p-tag">Proptech App</span>
+                            <h2>RoomSync+</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Gestión de compañeros de piso sin asesinatos.</p>
+                            <ul>
+                                <li>Algoritmo de compatibilidad</li>
+                                <li>Pagos divididos automáticos</li>
+                            </ul>
+                            <button class="btn btn-small">Ver Caso Completo</button>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <div class="p-tags">AI / Streaming</div>
-                        <div class="p-name">Netflix AI Builder</div>
-                    </div>
-                </a>
+                </div>
 
-                <!-- Proyecto 2 -->
-                <a href="#" class="project-card">
-                    <div class="project-img">
-                        <img src="img/roomsync-cover.jpg" alt="RoomSync" onerror="this.src='https://placehold.co/600x400/000/FFF?text=ROOMSYNC'">
+                <!-- PROYECTO 3: CRYPTO (Blanco) -->
+                <div class="work-card card-crypto">
+                    <div class="card-content">
+                        <div class="card-header">
+                            <span class="p-tag">Web3 / SaaS</span>
+                            <h2>CryptoDash</h2>
+                        </div>
+                        <div class="card-body">
+                            <p>Protocolo DeFi para gente que no entiende DeFi.</p>
+                            <ul>
+                                <li>UX simplificada</li>
+                                <li>Gas fees optimizados</li>
+                            </ul>
+                            <button class="btn btn-small">Ver Caso Completo</button>
+                        </div>
                     </div>
-                    <div class="project-info">
-                        <div class="p-tags">Proptech App</div>
-                        <div class="p-name">RoomSync+</div>
-                    </div>
-                </a>
-
-                <!-- Proyecto 3 -->
-                <a href="#" class="project-card">
-                    <div class="project-img">
-                        <img src="img/crypto-cover.jpg" alt="Crypto" onerror="this.src='https://placehold.co/600x400/yellow/000?text=CRYPTO'">
-                    </div>
-                    <div class="project-info">
-                        <div class="p-tags">Web3 / SaaS</div>
-                        <div class="p-name">CryptoDash Protocol</div>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- TEAM (CEREBROS Y PIXELES - ÓRBITA) -->
+    <!-- TEAM (Órbitas Rápidas) -->
     <section class="team-orbit-section">
-        <div class="team-solar-system">
-            <!-- Título central (Sol) -->
+        <div class="container" style="position: relative; z-index: 10;">
             <div class="sun-title">CEREBROS<br>& PÍXELES</div>
-
-            <!-- Órbita Interior (Alex) -->
-            <div class="team-track track-inner">
-                <div class="team-face">
-                    <img src="assets/image_Alex.jpg" alt="Alex" onerror="this.src='https://placehold.co/100?text=ALX'">
-                </div>
-            </div>
-
-            <!-- Órbita Exterior (Carla y Tori) -->
-            <div class="team-track track-outer">
-                <!-- Carla -->
-                <div class="team-face">
-                    <img src="assets/image_Carla.jpg" alt="Carla" onerror="this.src='https://placehold.co/100?text=CRL'">
-                </div>
-                <!-- Tori (Opuesto a Carla por CSS animation timing o posición manual) -->
-                <div class="team-face" style="animation-delay: -17s;">
-                    <img src="assets/image_Tori.jpg" alt="Tori" onerror="this.src='https://placehold.co/100?text=TOR'">
-                </div>
-            </div>
         </div>
-        <div class="container">
-            <p style="margin-top: 2rem;">(Pasa el ratón para detener el tiempo)</p>
-            <a href="team.html" class="btn" style="margin-top: 1rem;">Ver Fichas Completas</a>
+
+        <div class="team-system">
+            <!-- Pista 1: Alex -->
+            <div class="orbit-track track-alex">
+                <div class="face-container">
+                    <img src="image_Alex.jpg" alt="Alex" class="team-face" onerror="this.src='https://placehold.co/100?text=ALX'">
+                </div>
+            </div>
+            <!-- Pista 2: Carla -->
+            <div class="orbit-track track-carla">
+                <div class="face-container">
+                    <img src="image_Carla.jpg" alt="Carla" class="team-face" onerror="this.src='https://placehold.co/100?text=CRL'">
+                </div>
+            </div>
+            <!-- Pista 3: Tori -->
+            <div class="orbit-track track-tori">
+                <div class="face-container">
+                    <img src="image_Tori.jpg" alt="Tori" class="team-face" onerror="this.src='https://placehold.co/100?text=TOR'">
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer id="contacto">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: #666;">¿HABLAMOS?</h3>
-                    <a href="mailto:hola@patio.com" class="footer-email">hola@patio.com</a>
-                </div>
-                <div style="text-align: right;">
-                    <p>© 2025 Patio Digital.</p>
-                    <p>Hecho con HTML, CSS y lágrimas.</p>
-                    <div style="margin-top: 1rem;">
-                        <a href="#" style="color: #fff; margin-left: 1rem;">Github</a>
-                        <a href="#" style="color: #fff; margin-left: 1rem;">LinkedIn</a>
-                    </div>
+        <div class="container footer-grid">
+            <div>
+                <h3>¿HABLAMOS?</h3>
+                <a href="mailto:hola@patio.com" class="footer-email">hola@patio.com</a>
+            </div>
+            <div class="footer-meta">
+                <p>© 2025 Patio Digital.</p>
+                <p>Hecho con HTML, CSS y lágrimas.</p>
+                <div class="socials">
+                    <a href="#">Github</a>
+                    <a href="#">LinkedIn</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- SCRIPT (PATO) -->
-    <script>
-        const duck = document.getElementById('the-duck');
-        let currentFrame = 1;
-        const totalFrames = 8;
-        let duckInterval;
-        let clickCount = 0;
-        let clickTimer;
-
-        // Audios (Asegurate de tenerlos en assets/audio/)
-        const audioCuac = new Audio('assets/audio/cuac.mp3');
-        const audioMalaje = new Audio('assets/audio/malaje.mp3');
-
-        function animateDuck() {
-            currentFrame++;
-            if (currentFrame > totalFrames) currentFrame = 1;
-            const frameString = currentFrame.toString().padStart(4, '0'); 
-            duck.src = `assets/duck/frame_${frameString}.png`;
-        }
-
-        function startWalking() {
-            duckInterval = setInterval(animateDuck, 100);
-            duck.style.animationPlayState = 'running';
-        }
-
-        function stopWalking() {
-            clearInterval(duckInterval);
-            duck.style.animationPlayState = 'paused';
-        }
-
-        startWalking();
-
-        duck.addEventListener('mouseenter', stopWalking);
-        duck.addEventListener('mouseleave', startWalking);
-
-        duck.addEventListener('click', () => {
-            clickCount++;
-            clearTimeout(clickTimer);
-            clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
-
-            if (clickCount < 4) {
-                audioCuac.currentTime = 0;
-                audioCuac.play();
-                duck.style.transform = "scale(1.2)";
-                setTimeout(() => duck.style.transform = "scale(1)", 100);
-            } else {
-                audioMalaje.play();
-                duck.classList.remove('duck-walking');
-                duck.classList.add('duck-running');
-                duck.removeEventListener('mouseenter', stopWalking);
-            }
-        });
-    </script>
+    <!-- JS VINCULADO -->
+    <script src="script.js"></script>
 </body>
 </html>
