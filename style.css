@@ -1,0 +1,288 @@
+/* =========================================
+   ESTILO: NEO-BRUTALISM + POP ART
+   ========================================= */
+
+:root {
+    --bg: #F0F0F0;          /* GRIS para Hero */
+    --bg-light: #FAFAFA;
+    --ink: #050505;
+    --accent: #FF4500;      /* Naranja */
+    --accent-yellow: #FFD700; 
+    --code-green: #00FF41;  
+    
+    --border: 3px solid var(--ink);
+    --shadow: 8px 8px 0px 0px var(--ink);
+    --container: 1400px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-light);
+    color: var(--ink);
+    font-family: 'Satoshi', sans-serif;
+    overflow-x: hidden;
+}
+
+/* TIPOGRAFÍA */
+h1, h2, h3, .brand-font, .nav-item, .btn {
+    font-family: 'Clash Display', sans-serif;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* BOTONES */
+.btn {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border: 2px solid var(--ink);
+    text-decoration: none;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.btn:hover {
+    background: var(--accent);
+    color: var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    transform: translate(-2px, -2px);
+}
+.btn-outline {
+    background: transparent; color: var(--ink);
+}
+.btn-outline:hover { background: var(--ink); color: #fff; }
+
+/* HEADER */
+header {
+    border-bottom: var(--border);
+    background: #fff;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    position: sticky; top: 0; z-index: 1000;
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+.logo { height: 40px; display: flex; align-items: center; font-weight: 800; font-size: 1.5rem; }
+.logo img { height: 100%; width: auto; }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-item:hover { color: var(--accent); text-decoration: underline; }
+.ext-link { opacity: 0.6; font-size: 0.85rem; }
+.ext-link:hover { opacity: 1; }
+
+/* HERO SECTION */
+.hero {
+    position: relative;
+    min-height: 90vh;
+    border-bottom: var(--border);
+    overflow: hidden;
+    display: flex; align-items: center;
+    /* FONDO GRIS + TRAMA SVG */
+    background-color: #E5E5E5; 
+    background-image: url('assets/pop/trama.svg');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2rem; align-items: center; height: 100%;
+}
+
+.hero-text {
+    position: relative; z-index: 10;
+    background: rgba(255,255,255,0.95);
+    padding: 3rem; border: var(--border);
+    box-shadow: var(--shadow);
+}
+
+h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2rem; }
+
+.highlight-marker {
+    background: linear-gradient(120deg, var(--accent-yellow) 0%, var(--accent-yellow) 100%);
+    background-repeat: no-repeat; background-size: 100% 30%; background-position: 0 85%; display: inline;
+}
+
+.hero-buttons { display: flex; gap: 1rem; margin-top: 2rem; }
+
+/* ORBITAS HERO */
+.orbit-container {
+    position: relative; width: 100%; height: 600px;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.planet-center {
+    width: 100px; height: 100px;
+    background: var(--ink); border-radius: 50%;
+    position: absolute; z-index: 2;
+    border: 4px solid #fff;
+}
+
+.track-1, .track-2 {
+    border: 2px dashed var(--ink);
+    border-radius: 50%; position: absolute;
+}
+.track-1 { width: 300px; height: 300px; animation: rotate 20s linear infinite; }
+.track-2 { width: 500px; height: 500px; animation: rotate 35s linear infinite reverse; }
+
+/* SVGs Orbitando */
+.satellite-svg {
+    position: absolute; top: -30px; left: 50%;
+    width: 60px; height: 60px;
+    animation: counter-rotate 20s linear infinite; /* Para que no giren sobre sí mismos */
+}
+.track-2 .satellite-svg { animation-duration: 35s; animation-direction: reverse; }
+
+/* Colores de los SVGs (Filtros CSS o fondos) */
+.svg-white { filter: drop-shadow(4px 4px 0px var(--ink)); background: #fff; padding: 5px; border: var(--border); }
+.svg-yellow { filter: drop-shadow(4px 4px 0px var(--ink)); background: var(--accent-yellow); padding: 5px; border: var(--border); }
+.svg-blue { filter: drop-shadow(4px 4px 0px var(--ink)); background: #4444ff; padding: 5px; border: var(--border); }
+
+@keyframes rotate { 100% { transform: rotate(360deg); } }
+@keyframes counter-rotate { 100% { transform: rotate(-360deg); } }
+
+/* SERVICIOS */
+.services-section {
+    background-color: var(--ink); color: #fff; padding: 8rem 0;
+    background-image: radial-gradient(#333 1px, transparent 1px); background-size: 30px 30px;
+}
+.section-title { font-size: 4rem; margin-bottom: 4rem; color: #fff; }
+.bento-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; grid-template-rows: 350px; gap: 2rem; }
+.bento-box { border: 3px solid #fff; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; background: #000; }
+.box-strategy { background: var(--accent); border-color: var(--ink); color: var(--ink); }
+.box-ui { background: #fff; color: var(--ink); border-color: var(--ink); }
+.box-dev { background: #111; color: var(--code-green); border-color: #333; }
+.bento-box:hover { transform: translate(-5px, -5px); box-shadow: 8px 8px 0 rgba(255,255,255,0.2); }
+.box-strategy:hover { box-shadow: 8px 8px 0 #fff; }
+
+/* SELECTED WORK (ACCORDION) */
+.work-section { padding: 8rem 0; background: #fff; border-bottom: var(--border); }
+.work-title { font-size: 4rem; margin-bottom: 3rem; color: var(--ink); }
+
+.work-gallery {
+    display: flex;
+    gap: 1.5rem;
+    height: 600px; /* Altura fija para el efecto acordeón */
+}
+
+.work-card {
+    flex: 1; /* Todos ocupan 1 unidad */
+    position: relative;
+    border: var(--border);
+    transition: flex 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+}
+
+.work-card:hover {
+    flex: 3; /* Al hover ocupa 3 unidades */
+}
+
+/* Colores Proyectos */
+.card-netflix { background: var(--accent); color: var(--ink); }
+.card-roomsync { background: #888; color: #fff; }
+.card-crypto { background: #FAFAFA; color: var(--ink); }
+
+.card-content {
+    padding: 3rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 400px; /* Evita que el texto se rompa cuando está cerrado */
+}
+
+.card-header h2 { font-size: 4rem; line-height: 0.9; margin-top: 1rem; }
+.p-tag { font-weight: 700; text-transform: uppercase; border: 2px solid var(--ink); padding: 5px 10px; display: inline-block; background: rgba(255,255,255,0.5); }
+
+/* Ocultar cuerpo hasta expandir */
+.card-body {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s;
+    transition-delay: 0.1s;
+}
+
+.work-card:hover .card-body {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card-body ul { list-style-position: inside; margin: 1.5rem 0; font-size: 1.2rem; }
+.btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; background: #fff; color: var(--ink); }
+
+/* TEAM ORBIT (Low Height, High Speed) */
+.team-orbit-section {
+    padding: 4rem 0; /* Altura reducida */
+    position: relative;
+    overflow: hidden;
+    background: #fff;
+    display: flex; justify-content: center; align-items: center;
+    height: 500px;
+}
+
+.sun-title {
+    font-size: 3rem; font-weight: 700; background: var(--accent-yellow);
+    padding: 2rem; border: var(--border); box-shadow: var(--shadow);
+    z-index: 20; transform: rotate(-5deg); text-align: center;
+}
+
+.team-system { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; height: 100%; }
+
+.orbit-track {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    border: 1px dashed #ccc; border-radius: 50%;
+}
+
+.track-alex { width: 400px; height: 400px; animation: rotate 8s linear infinite; } /* Rápido */
+.track-carla { width: 700px; height: 700px; animation: rotate 12s linear infinite reverse; }
+.track-tori { width: 1000px; height: 1000px; animation: rotate 15s linear infinite; }
+
+.face-container {
+    position: absolute; top: -30px; left: 50%;
+    width: 60px; height: 60px;
+    animation: counter-rotate 8s linear infinite; /* Debe coincidir con su track */
+}
+.track-carla .face-container { animation-duration: 12s; animation-direction: reverse; }
+.track-tori .face-container { animation-duration: 15s; }
+
+.team-face {
+    width: 100%; height: 100%; border-radius: 50%; border: 3px solid var(--ink);
+    object-fit: cover;
+}
+
+/* FOOTER */
+footer { background: var(--ink); color: #fff; padding: 4rem 0; border-top: var(--border); }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
+.footer-email { font-size: 3rem; font-weight: 700; color: #fff; text-decoration: none; }
+.footer-meta { text-align: right; }
+.socials a { color: #fff; margin-left: 1rem; }
+
+/* EL PATO */
+#the-duck {
+    position: absolute; bottom: -3px; left: -100px;
+    width: 96px; height: 96px; /* Aumentado */
+    image-rendering: pixelated; z-index: 100; cursor: pointer;
+}
+.duck-walking { animation: walkAcross 20s linear infinite; }
+.duck-running { animation: exitStage 2s linear forwards !important; }
+
+@keyframes walkAcross {
+    0% { left: -100px; transform: scaleX(1); }
+    49% { transform: scaleX(1); }
+    50% { left: 100vw; transform: scaleX(-1); }
+    100% { left: -100px; transform: scaleX(-1); }
+}
+
+@keyframes exitStage {
+    0% { transform: scaleX(1); }
+    100% { left: 120vw; transform: scaleX(1); } /* Salir corriendo */
+}
