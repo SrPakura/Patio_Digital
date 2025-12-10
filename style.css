@@ -24,9 +24,39 @@ body {
     overflow-x: hidden;
 }
 
+/* TITULARES */
 h1, h2, h3, .brand-font, .nav-item, .btn {
     font-family: 'Clash Display', sans-serif;
-    text-transform: uppercase;
+    text-transform: uppercase; /* Esto ya lo tenías, perfecto! */
+    letter-spacing: -0.02em;  /* Juntamos un poquito las letras. Da un look más denso y potente. */
+}
+
+/* TEXTO TÉCNICO */
+.mono-font {
+    font-family: 'Space Grotesk', monospace; /* Fuente de dev */
+}
+
+/* =========================================
+   TIPOGRAFÍA - Nuevas cosas
+   ========================================= */
+
+/* PÁRRAFOS */
+p {
+    line-height: 1.7; /* Aumenta el interlineado, más aire entre líneas */
+    color: #333;      /* Un negro menos intenso, más amable a la vista */
+    max-width: 65ch; /* Limita la longitud de la línea para facilitar la lectura continua */
+}
+
+/* Hacemos una excepción para la intro, que sea un poco más grande */
+.hero-text p {
+    font-size: 1.1rem;
+    max-width: 55ch; /* Un poco más estrecho para darle más impacto */
+}
+
+/* Y para las cajas de servicios, que el texto no se pierda */
+.bento-box p {
+    font-size: 1.1rem;
+    max-width: 100%; /* Anulamos el límite aquí para que ocupe bien su caja */
 }
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 2rem; }
