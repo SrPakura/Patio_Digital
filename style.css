@@ -27,8 +27,8 @@ body {
 /* TITULARES */
 h1, h2, h3, .brand-font, .nav-item, .btn {
     font-family: 'Clash Display', sans-serif;
-    text-transform: uppercase; /* Esto ya lo tenías, perfecto! */
-    letter-spacing: -0.02em;  /* Juntamos un poquito las letras. Da un look más denso y potente. */
+    text-transform: uppercase; 
+    letter-spacing: 0.01em;  
 }
 
 /* TEXTO TÉCNICO */
