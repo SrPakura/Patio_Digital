@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Revisar si el pato ya se fue (LocalStorage)
     if (localStorage.getItem('duckGone') === 'true') {
         const duck = document.getElementById('the-duck');
         if (duck) duck.style.display = 'none';
-        // Si el pato se fue, no ejecutamos nada más
         return; 
     }
 
@@ -14,12 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let duckInterval;
     let clickCount = 0;
     let clickTimer;
-
-    // Cargar Audios
     const audioCuac = new Audio('assets/audio/cuac.mp3');
     const audioMalaje = new Audio('assets/audio/malaje.mp3');
 
-    // Animación de Sprites
     function animateDuck() {
         currentFrame++;
         if (currentFrame > totalFrames) currentFrame = 1;
@@ -46,37 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
     duck.addEventListener('mouseenter', stopWalking);
     duck.addEventListener('mouseleave', startWalking);
 
-    // CLICK LOGIC
     duck.addEventListener('click', () => {
         clickCount++;
-        
-        // Reiniciar contador si pasan 2 segundos sin clicks
         clearTimeout(clickTimer);
         clickTimer = setTimeout(() => { clickCount = 0; }, 2000);
 
-        if (clickCount < 5) { // Antes era 4, ahora < 5 permite 4 clicks normales
+        if (clickCount < 5) {
             audioCuac.currentTime = 0;
             audioCuac.play();
             duck.style.transform = "scale(1.2)";
             setTimeout(() => duck.style.transform = "scale(1)", 100);
         } else {
-            // MALAJE MODE (5º Click)
             audioMalaje.play();
-            
-            // Congelar
             clearInterval(duckInterval);
             duck.style.animationPlayState = 'paused';
             duck.style.pointerEvents = 'none'; 
-
-            // Esperar y correr
             setTimeout(() => {
                 duck.classList.remove('duck-walking');
                 duck.classList.add('duck-running');
-                duckInterval = setInterval(animateDuck, 50); // Correr rápido
-                
-                // Guardar que se fue
+                duckInterval = setInterval(animateDuck, 50); 
                 localStorage.setItem('duckGone', 'true');
-                
                 setTimeout(() => { duck.remove(); }, 3000);
             }, 1000);
         }
