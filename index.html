@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <!-- SISTEMA SOLAR (LIMPIO) -->
+            <!-- SISTEMA SOLAR -->
             <div class="orbit-container">
                 <!-- Sol Central Naranja -->
                 <div class="planet-center"></div> 
@@ -51,50 +51,46 @@
                 <!-- Pista 1: Corazón -->
                 <div class="track track-1">
                     <div class="orbiter">
-                        <!-- Sin clase 'raw-svg', imagen limpia -->
-                        <img src="assets/pop/cora.svg" alt="Like" style="width: 40px;">
+                        <img src="assets/pop/cora.svg" alt="Like" class="svg-icon">
                     </div>
                 </div>
 
                 <!-- Pista 2: Sol -->
                 <div class="track track-2">
                     <div class="orbiter">
-                        <img src="assets/pop/sun.svg" alt="Sun" style="width: 60px;">
+                        <img src="assets/pop/sun.svg" alt="Sun" class="svg-icon">
                     </div>
                 </div>
 
                 <!-- Pista 3: Ojo -->
                 <div class="track track-3">
                     <div class="orbiter">
-                        <img src="assets/pop/eye.svg" alt="Vision" style="width: 50px;">
+                        <img src="assets/pop/eye.svg" alt="Vision" class="svg-icon">
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- EL PATO -->
-        <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato">
     </section>
 
-    <!-- SERVICIOS (BENTO GRID RESTAURADO) -->
+    <!-- SERVICIOS (BENTO GRID CORREGIDO: 2 COLUMNAS) -->
     <section class="services-section">
         <div class="container">
             <h2 class="section-title">NUESTROS SERVICIOS</h2>
             
             <div class="bento-grid">
-                <!-- Caja Naranja -->
+                <!-- Caja Naranja (Izquierda, Grande) -->
                 <div class="bento-box box-strategy">
                     <h3>01.<br>Estrategia & Caos</h3>
                     <p>Convertimos ideas vagas en roadmaps sólidos antes de abrir Figma.</p>
                 </div>
 
-                <!-- Caja Blanca -->
+                <!-- Caja Blanca (Derecha, Arriba) -->
                 <div class="bento-box box-ui">
                     <h3>02. UI/UX Radical</h3>
                     <p>Diseño visual con carácter y accesibilidad que enamora.</p>
                 </div>
 
-                <!-- Caja Negra -->
+                <!-- Caja Negra (Derecha, Abajo) -->
                 <div class="bento-box box-dev">
                     <h3 class="mono-font">> 03_DEV_MODE</h3>
                     <p>> Código limpio.<br>> Google ama esto.</p>
@@ -104,7 +100,7 @@
         </div>
     </section>
 
-    <!-- SELECTED WORK (TEXTOS RECUPERADOS) -->
+    <!-- SELECTED WORK (CON DESCRIPCIONES) -->
     <section class="work-section" id="work">
         <div class="container">
             <h2 class="work-title">SELECTED WORK.</h2>
@@ -118,7 +114,7 @@
                             <h2>Netflix AI Builder</h2>
                         </div>
                         <div class="card-body">
-                            <p>Plataforma para generación de assets mediante IA para optimizar el flujo de trabajo de los editores.</p>
+                            <p>Plataforma interna para generación de assets mediante IA para optimizar flujos.</p>
                             <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
@@ -132,7 +128,7 @@
                             <h2>RoomSync+</h2>
                         </div>
                         <div class="card-body">
-                            <p>App para gestión de convivencia en pisos compartidos, pagos y tareas sin peleas.</p>
+                            <p>App para gestión de convivencia en pisos compartidos sin asesinatos.</p>
                             <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
@@ -146,7 +142,7 @@
                             <h2>CryptoDash</h2>
                         </div>
                         <div class="card-body">
-                            <p>Dashboard simplificado para gestión de carteras DeFi con enfoque en accesibilidad.</p>
+                            <p>Dashboard simplificado para gestión de carteras DeFi accesibles.</p>
                             <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
@@ -159,7 +155,7 @@
         </div>
     </section>
 
-    <!-- TEAM (RUTAS CORREGIDAS + FONDO PUNTOS) -->
+    <!-- TEAM (CEREBROS Y PIXELES) -->
     <section class="team-orbit-section">
         <div class="sun-title">CEREBROS<br>& PÍXELES</div>
 
@@ -167,7 +163,6 @@
             <!-- Pista 1: Alex -->
             <div class="orbit-track track-alex">
                 <div class="face-container">
-                    <!-- Ruta corregida a raíz -->
                     <img src="image_Alex.jpg" alt="Alex" class="team-face" onerror="this.src='https://placehold.co/100?text=ALX'">
                 </div>
             </div>
@@ -206,6 +201,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- EL PATO (FUERA DE TODO, POSICIÓN FIJA) -->
+    <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato">
 
     <!-- JS -->
     <script src="script.js"></script>
