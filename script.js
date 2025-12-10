@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Check LocalStorage
     if (localStorage.getItem('duckGone') === 'true') {
         const duck = document.getElementById('the-duck');
         if (duck) duck.style.display = 'none';
@@ -6,11 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const duck = document.getElementById('the-duck');
+    if (!duck) {
+        console.error("¡El pato no se encuentra en el DOM!");
+        return;
+    }
+
     let currentFrame = 1;
     const totalFrames = 8;
     let duckInterval;
     let clickCount = 0;
     let clickTimer;
+    
+    // Rutas relativas a assets/audio/
     const audioCuac = new Audio('assets/audio/cuac.mp3');
     const audioMalaje = new Audio('assets/audio/malaje.mp3');
 
@@ -47,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (clickCount < 5) {
             audioCuac.currentTime = 0;
-            audioCuac.play();
+            audioCuac.play().catch(e => console.log("Audio error:", e));
             duck.style.transform = "scale(1.2)";
             setTimeout(() => duck.style.transform = "scale(1)", 100);
         } else {
