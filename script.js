@@ -91,28 +91,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
 
         } else {
-            // Comportamiento MALAJE (5 clicks rápidos)
-            console.log("¡Pato enfadado!");
-            playSound(audioMalaje);
-            
-            // 1. Quitar eventos para que no se le pueda clickar más
-            duck.style.pointerEvents = 'none'; 
-            
-            // 2. Parar animación de caminar tranquila
-            clearInterval(duckInterval);
-            
-            // 3. Activar modo huida
-            duck.classList.remove('duck-walking');
-            duck.classList.add('duck-running'); // Esta clase activa la animación CSS rápida
-            
-            // 4. Animar los frames más rápido (patitas a toda leche)
-            duckInterval = setInterval(animateDuck, 50); 
-            
-            // 5. Eliminar del DOM al terminar
-            setTimeout(() => { 
-                duck.remove(); 
-                // Opcional: localStorage.setItem('duckGone', 'true'); // Si decides activarlo
-            }, 2000); // Tiempo que tarda en salir de pantalla aprox
-        }
+    // Comportamiento MALAJE (5 clicks rápidos)
+    console.log("¡Pato enfadado!");
+    
+    // 1. Sonar audio borde
+    playSound(audioMalaje);
+    
+    // 2. Desactivar interacciones (ya no recibe clicks ni detecta el ratón)
+    duck.style.pointerEvents = 'none'; 
+    
+    // 3. (OPCIONAL) Efecto visual para indicar que se ha bloqueado
+    // Le bajamos un poco la opacidad para que se vea que "pasa de ti"
+    duck.style.opacity = "0.7"; 
+    duck.style.filter = "grayscale(100%)"; // Se vuelve gris y aburrido (opcional)
+    
+    // Y YA ESTÁ. No borramos el pato, ni paramos la caminata. 
+    // Sigue su camino pero te ignora completamente.
+}
     });
 });
