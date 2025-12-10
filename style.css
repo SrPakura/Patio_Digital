@@ -38,6 +38,10 @@ header {
 }
 .nav-wrapper { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 .logo { height: 40px; display: flex; align-items: center; font-weight: 800; font-size: 1.5rem; text-decoration: none; color: var(--ink); }
+.logo img { /* Jodete puto logo de mierda, que me has hecho llorar durante 2 horas*/
+    height: 100%; 
+    width: auto; 
+} 
 .nav-links { display: flex; gap: 2rem; align-items: center; }
 
 /* LINKS DE NAVEGACIÓN (NEGROS) */
