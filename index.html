@@ -72,6 +72,11 @@
         </div>
     </section>
 
+    <!-- PISTA DEL PATO (NUEVA SECCIÓN) -->
+    <div class="duck-lane-container">
+        <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato guardián caminando">
+    </div>
+
     <!-- SERVICIOS (BENTO GRID CORREGIDO: 2 COLUMNAS) -->
     <section class="services-section">
         <div class="container">
@@ -114,8 +119,9 @@
                             <h2>Netflix AI Builder</h2>
                         </div>
                         <div class="card-body">
-                            <p>Plataforma interna para generación de assets mediante IA para optimizar flujos.</p>
-                            <button class="btn btn-small">Ver Caso</button>
+                            <p>Plataforma interna dopada con IA para generar assets de marketing. Reduce flujos de trabajo de 4 horas a 15 minutos sin que nadie pierda su alma en el proceso.</p>
+                            <!-- He cambiado la clase btn-small por btn-work para darle caña en CSS -->
+                            <button class="btn btn-work">Ver Caso Completo</button>
                         </div>
                     </div>
                 </div>
@@ -128,8 +134,9 @@
                             <h2>RoomSync+</h2>
                         </div>
                         <div class="card-body">
-                            <p>App para gestión de convivencia en pisos compartidos sin asesinatos.</p>
-                            <button class="btn btn-small">Ver Caso</button>
+                            <!-- Texto expandido -->
+                            <p>Gestión de convivencia para pisos de estudiantes. Incluye calendario de limpieza, control de gastos compartidos y un sistema de alertas pasivo-agresivas.</p>
+                            <button class="btn btn-work">Ver Caso Completo</button>
                         </div>
                     </div>
                 </div>
@@ -142,8 +149,9 @@
                             <h2>CryptoDash</h2>
                         </div>
                         <div class="card-body">
-                            <p>Dashboard simplificado para gestión de carteras DeFi accesibles.</p>
-                            <button class="btn btn-small">Ver Caso</button>
+                            <!-- Texto expandido -->
+                            <p>Dashboard DeFi simplificado para humanos. Gráficas legibles, cero jerga técnica innecesaria y una interfaz que no parece una hoja de cálculo de 1998.</p>
+                            <button class="btn btn-work">Ver Caso Completo</button>
                         </div>
                     </div>
                 </div>
@@ -170,7 +178,7 @@
                 
                 <!-- ALEX (Naranja) -->
                 <div class="acc-panel panel-alex">
-                    <img src="image_Alex.jpg" alt="Alex" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=ALX'">
+                    <img src="image_Alex.jpg" alt="Alex, el desarrollador, mirando a cámara mientras come un churro con actitud desafiante" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=ALX'">
                     <div class="acc-info">
                         <h3>Alex</h3>
                         <p>The Dev</p>
@@ -180,7 +188,7 @@
 
                 <!-- CARLA (Azul) -->
                 <div class="acc-panel panel-carla">
-                    <img src="image_Carla.jpg" alt="Carla" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=CRL'">
+                    <img src="image_Carla.jpg" alt="Carla, la jefa, sonriendo con confianza y probablemente pensando en facturar" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=CRL'">
                     <div class="acc-info">
                         <h3>Carla</h3>
                         <p>The Boss & UI</p>
@@ -190,7 +198,7 @@
 
                 <!-- TORI (Amarillo/Gris) -->
                 <div class="acc-panel panel-tori">
-                    <img src="image_Tori.jpg" alt="Tori" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=TOR'">
+                    <img src="image_Tori.jpg" alt="Tori, experta en accesibilidad, sosteniendo un juguete con mirada de juez" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=TOR'">
                     <div class="acc-info">
                         <h3>Tori</h3>
                         <p>Access. & Vision</p>
@@ -225,8 +233,7 @@
         </div>
     </footer>
 
-    <!-- EL PATO (FUERA DE TODO, POSICIÓN FIJA) -->
-    <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato">
+    <!-- EL PATO (REMOVIDO DE AQUÍ Y MOVIDO A duck-lane-container) -->
 
     <!-- JS -->
     <script src="script.js"></script>
