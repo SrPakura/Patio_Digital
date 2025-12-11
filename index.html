@@ -45,55 +45,62 @@
 
             <!-- SISTEMA SOLAR -->
             <div class="orbit-container">
+                <!-- Sol Central Naranja -->
                 <div class="planet-center"></div> 
+                
+                <!-- Pista 1: Corazón -->
                 <div class="track track-1">
-                    <div class="orbiter"><img src="assets/pop/cora.svg" alt="Like" class="svg-icon"></div>
+                    <div class="orbiter">
+                        <img src="assets/pop/cora.svg" alt="Like" class="svg-icon">
+                    </div>
                 </div>
+
+                <!-- Pista 2: Sol -->
                 <div class="track track-2">
-                    <div class="orbiter"><img src="assets/pop/sun.svg" alt="Sun" class="svg-icon"></div>
+                    <div class="orbiter">
+                        <img src="assets/pop/sun.svg" alt="Sun" class="svg-icon">
+                    </div>
                 </div>
+
+                <!-- Pista 3: Ojo -->
                 <div class="track track-3">
-                    <div class="orbiter"><img src="assets/pop/eye.svg" alt="Vision" class="svg-icon"></div>
+                    <div class="orbiter">
+                        <img src="assets/pop/eye.svg" alt="Vision" class="svg-icon">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- PATO HIGHWAY (NUEVA SECCIÓN EXCLUSIVA PARA EL PATO) -->
-    <!-- 100px de altura, el pato camina aquí sin molestar textos -->
-    <div class="duck-highway">
-        <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato mascota de la agencia caminando">
-    </div>
-
-    <!-- SERVICIOS -->
+    <!-- SERVICIOS (BENTO GRID CORREGIDO: 2 COLUMNAS) -->
     <section class="services-section">
         <div class="container">
             <h2 class="section-title">NUESTROS SERVICIOS</h2>
             
             <div class="bento-grid">
-                <!-- Caja Naranja -->
+                <!-- Caja Naranja (Izquierda, Grande) -->
                 <div class="bento-box box-strategy">
                     <h3>01.<br>Estrategia & Caos</h3>
-                    <p>Convertimos ideas vagas en roadmaps sólidos antes de abrir Figma. Analizamos mercado, competencia y oportunidades para que no lances a ciegas.</p>
+                    <p>Convertimos ideas vagas en roadmaps sólidos antes de abrir Figma.</p>
                 </div>
 
-                <!-- Caja Blanca -->
+                <!-- Caja Blanca (Derecha, Arriba) -->
                 <div class="bento-box box-ui">
-                    <h3>02.<br>UI/UX Radical</h3>
-                    <p>Diseño visual con carácter y accesibilidad que enamora. No hacemos webs aburridas, hacemos experiencias que retienen usuarios.</p>
+                    <h3>02. UI/UX Radical</h3>
+                    <p>Diseño visual con carácter y accesibilidad que enamora.</p>
                 </div>
 
-                <!-- Caja Negra (Dev) -->
+                <!-- Caja Negra (Derecha, Abajo) -->
                 <div class="bento-box box-dev">
                     <h3>> 03_DEV_MODE</h3>
-                    <p>> Código limpio.<br>> Google ama esto.<br>> Carga en 0.2s.</p>
+                    <p>> Código limpio.<br>> Google ama esto.</p>
                     <span class="code-bracket">{ }</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SELECTED WORK -->
+    <!-- SELECTED WORK (CON DESCRIPCIONES) -->
     <section class="work-section" id="work">
         <div class="container">
             <h2 class="work-title">SELECTED WORK.</h2>
@@ -107,13 +114,13 @@
                             <h2>Netflix AI Builder</h2>
                         </div>
                         <div class="card-body">
-                            <p>Desarrollo de una herramienta interna capaz de generar assets promocionales en tiempo real utilizando modelos de difusión, reduciendo el tiempo de producción del equipo de diseño en un 40%.</p>
-                            <button class="btn btn-small">Ver Caso Completo</button>
+                            <p>Plataforma interna para generación de assets mediante IA para optimizar flujos.</p>
+                            <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROYECTO 2 (AZUL - AHORA CON TEXTO BLANCO) -->
+                <!-- PROYECTO 2 -->
                 <div class="work-card card-roomsync">
                     <div class="card-content">
                         <div class="card-header">
@@ -121,8 +128,8 @@
                             <h2>RoomSync+</h2>
                         </div>
                         <div class="card-body">
-                            <p>Aplicación móvil para la gestión integral de coliving. Incluye gestión de gastos compartidos, calendario de limpieza gamificado y chat integrado para evitar notas pasivo-agresivas en la nevera.</p>
-                            <button class="btn btn-small">Ver Caso Completo</button>
+                            <p>App para gestión de convivencia en pisos compartidos sin asesinatos.</p>
+                            <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
                 </div>
@@ -135,33 +142,35 @@
                             <h2>CryptoDash</h2>
                         </div>
                         <div class="card-body">
-                            <p>Dashboard financiero simplificado para usuarios no técnicos. Transformamos datos complejos de blockchain en visualizaciones digeribles y accesibles para todos los públicos.</p>
-                            <button class="btn btn-small">Ver Caso Completo</button>
+                            <p>Dashboard simplificado para gestión de carteras DeFi accesibles.</p>
+                            <button class="btn btn-small">Ver Caso</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 4rem;">
+            <div style="text-align: center; margin-top: 3rem;">
                 <a href="#" class="btn btn-wide">Ver todos los trabajos ↓</a>
             </div>
         </div>
     </section>
 
         
-    <!-- TEAM SECTION -->
+<!-- TEAM SECTION: ACORDEÓN BRUTALISTA -->
     <section class="team-accordion-section">
+        
+        <!-- TÍTULO DE LA SECCIÓN -->
         <div class="container" style="text-align: center; margin-bottom: 3rem;">
             <div class="sun-title-static">CEREBROS & PÍXELES</div>
         </div>
 
+        <!-- EL ACORDEÓN -->
         <div class="container">
             <div class="accordion-wrapper">
                 
-                <!-- ALEX -->
+                <!-- ALEX (Naranja) -->
                 <div class="acc-panel panel-alex">
-                    <!-- ALT TEXT DESCRIPTIVO Y GRACIOSO -->
-                    <img src="image_Alex.jpg" alt="Alex, el desarrollador principal, comiéndose un churro con actitud desafiante" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=ALX'">
+                    <img src="image_Alex.jpg" alt="Alex" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=ALX'">
                     <div class="acc-info">
                         <h3>Alex</h3>
                         <p>The Dev</p>
@@ -169,9 +178,9 @@
                     <div class="acc-overlay"></div>
                 </div>
 
-                <!-- CARLA -->
+                <!-- CARLA (Azul) -->
                 <div class="acc-panel panel-carla">
-                    <img src="image_Carla.jpg" alt="Carla, la jefa de operaciones, sonriendo mientras piensa en hojas de cálculo" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=CRL'">
+                    <img src="image_Carla.jpg" alt="Carla" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=CRL'">
                     <div class="acc-info">
                         <h3>Carla</h3>
                         <p>The Boss & UI</p>
@@ -179,9 +188,9 @@
                     <div class="acc-overlay"></div>
                 </div>
 
-                <!-- TORI -->
+                <!-- TORI (Amarillo/Gris) -->
                 <div class="acc-panel panel-tori">
-                    <img src="image_Tori.jpg" alt="Tori sujetando un peluche anti-estrés, juzgando tu contraste de colores" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=TOR'">
+                    <img src="image_Tori.jpg" alt="Tori" class="acc-img" onerror="this.src='https://placehold.co/400x600?text=TOR'">
                     <div class="acc-info">
                         <h3>Tori</h3>
                         <p>Access. & Vision</p>
@@ -192,9 +201,11 @@
             </div>
         </div>
 
+        <!-- BOTÓN -->
         <div class="team-cta-container-static">
             <a href="team.html" class="btn">Conoce a los Culpables</a>
         </div>
+
     </section>
 
     <!-- FOOTER -->
@@ -213,6 +224,9 @@
             </div>
         </div>
     </footer>
+
+    <!-- EL PATO (FUERA DE TODO, POSICIÓN FIJA) -->
+    <img id="the-duck" class="duck-walking" src="assets/duck/frame_0001.png" alt="Pato">
 
     <!-- JS -->
     <script src="script.js"></script>
