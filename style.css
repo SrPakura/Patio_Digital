@@ -191,19 +191,19 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 }
 
 /* =========================================
-   FIXES ACCESIBILIDAD & LAYOUT (GORLOCK EDITION)
+   FIXES ACCESIBILIDAD & LAYOUT 
    ========================================= */
 /* NUEVA PISTA PARA EL PATO */
 .duck-lane-container {
     position: relative; /* Contexto para el pato */
     width: 100%;
     height: 120px; /* Un poco más de altura para que respire */
-    background-color: var(--bg-light); 
+    background-color: var(--ink); /* Fondo negro */
     border-bottom: var(--border);
     overflow: hidden; /* Para que no genere scroll lateral */
     z-index: 50;
     /* Opcional: Patrón de puntos suave para que no esté vacío */
-    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-image: radial-gradient(#666 1px, transparent 1px); /* Puntos gris oscuro sobre negro */
     background-size: 20px 20px;
 }
 
