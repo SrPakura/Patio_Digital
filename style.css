@@ -1,6 +1,6 @@
 /* =========================================
-   ESTILO: NEO-BRUTALISM + POP ART (o eso digo yo)
-   ========================================= */
+    ESTILO: NEO-BRUTALISM + POP ART (o eso digo yo)
+    ========================================= */
 
 :root {
     --bg-light: #FAFAFA;
@@ -32,13 +32,13 @@ h1, h2, h3, .brand-font, .nav-item, .btn {
 }
 
 /* =========================================
-   TIPOGRAFÍA - Nuevas cosas
-   ========================================= */
+    TIPOGRAFÍA - Nuevas cosas
+    ========================================= */
 
 /* PÁRRAFOS */
 p {
     line-height: 1.7; /* Aumenta el interlineado, más aire entre líneas */
-    color: #333;      /* Un negro menos intenso, más amable a la vista */
+    color: #333;       /* Un negro menos intenso, más amable a la vista */
     max-width: 65ch; /* Limita la longitud de la línea para facilitar la lectura continua */
 }
 
@@ -53,6 +53,14 @@ p {
     font-size: 1.1rem;
     max-width: 100%; /* Anulamos el límite aquí para que ocupe bien su caja */
 }
+/* AUMENTAR TAMAÑO H3 EN BENTO GRID (Solicitado) */
+.bento-box h3 {
+    font-size: 2.5rem; /* Antes heredaba algo menor, ahora es GRANDE */
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
 
 .container { max-width: var(--container); margin: 0 auto; padding: 0 2rem; }
 
@@ -182,6 +190,30 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
     to { transform: translateX(-50%) rotate(-360deg); } 
 }
 
+/* =========================================
+   FIXES ACCESIBILIDAD & LAYOUT (GORLOCK EDITION)
+   ========================================= */
+/* NUEVA PISTA PARA EL PATO */
+.duck-lane-container {
+    position: relative; /* Contexto para el pato */
+    width: 100%;
+    height: 120px; /* Un poco más de altura para que respire */
+    background-color: var(--bg-light); 
+    border-bottom: var(--border);
+    overflow: hidden; /* Para que no genere scroll lateral */
+    z-index: 50;
+    /* Opcional: Patrón de puntos suave para que no esté vacío */
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* SOBREESCRIBIMOS EL PATO ACTUAL */
+#the-duck {
+    position: absolute !important; /* Importante para anular el fixed anterior */
+    bottom: 0;
+    /* Mantenemos el left y la animación original, funcionará dentro del relative */
+}
+
 /* SERVICIOS (GRID 2 COLUMNAS ARREGLADO) */
 .services-section {
     background-color: var(--ink); color: #fff; padding: 8rem 0;
@@ -213,6 +245,15 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
     grid-column: 2 / 3; grid-row: 2 / 3;
     background: #111; border: 1px solid #333; color: var(--code-green); 
 }
+/* FIX CONTRASTE: CAJA NEGRA (SERVICIOS) */
+.box-dev p {
+    color: #FFFFFF !important; /* Blanco puro para lectura perfecta */
+    font-size: 1.2rem;
+}
+/* El código { } lo dejamos verde para mantener el estilo hacker */
+.box-dev .code-bracket {
+    color: var(--code-green);
+}
 
 .bento-box { padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; }
 .bento-box:hover { transform: translate(-5px, -5px); box-shadow: 8px 8px 0 rgba(255,255,255,0.3); }
@@ -234,6 +275,24 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 .card-roomsync { background: var(--accent-blue); color: #fff; }
 .card-crypto { background: var(--accent-yellow); color: var(--ink); }
 
+/* FIX CONTRASTE: TARJETA AZUL (ROOMSYNC) */
+.card-roomsync {
+    /* Aseguramos fondo azul pero forzamos texto blanco */
+    color: #FFFFFF !important;
+}
+.card-roomsync h2, .card-roomsync .p-tag, .card-roomsync p {
+    color: #FFFFFF !important;
+    text-shadow: none; /* Por si acaso */
+}
+.card-roomsync p {
+    font-weight: 500; /* Un poco más de grosor ayuda a leer sobre azul saturado */
+}
+/* El borde del tag en la tarjeta azul que sea blanco también */
+.card-roomsync .p-tag {
+    border-color: #FFFFFF;
+    background: rgba(255,255,255,0.1); /* Transparencia sutil */
+}
+
 .card-content { padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: space-between; min-width: 350px; }
 .card-header h2 { font-size: 3rem; line-height: 0.95; margin-top: 1rem; }
 .p-tag { font-weight: 700; text-transform: uppercase; border: 2px solid var(--ink); padding: 4px 8px; display: inline-block; background: rgba(255,255,255,0.9); color: var(--ink); font-size: 0.8rem; }
@@ -241,9 +300,31 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
 .work-card:hover .card-body { opacity: 1; transform: translateY(0); }
 .btn-small { padding: 0.5rem 1rem; font-size: 0.8rem; background: #fff; color: var(--ink); border: 2px solid var(--ink); cursor: pointer; }
 
+/* NUEVOS BOTONES DE PROYECTOS (MÁS GRANDES) */
+.btn-work {
+    display: block; /* Para que ocupe ancho o respete margenes de bloque */
+    width: 100%;    /* Ocupa todo el ancho de la tarjeta */
+    margin-top: 2rem; /* SEPARACIÓN DEL TEXTO (GAP) */
+    padding: 1.2rem;  /* Más gordos */
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #fff;
+    color: var(--ink);
+    border: 3px solid var(--ink);
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-work:hover {
+    background: var(--ink);
+    color: #fff;
+    box-shadow: 6px 6px 0 rgba(255,255,255,0.5);
+    transform: translateY(-2px);
+}
+
 /* =========================================
-   TEAM SECTION: ACORDEÓN (NUEVO, PORQUE ALINEAR UNA ORBITA ME ESTA ACELERANDO LA ALOPECIA)
-   ========================================= */
+    TEAM SECTION: ACORDEÓN (NUEVO, PORQUE ALINEAR UNA ORBITA ME ESTA ACELERANDO LA ALOPECIA)
+    ========================================= */
 
 .team-accordion-section {
     padding: 6rem 0;
@@ -371,9 +452,10 @@ footer { background: var(--ink); color: #fff; padding: 4rem 0; border-top: var(-
 .footer-meta { text-align: right; }
 .socials a { color: #fff; margin-left: 1rem; }
 
-/* EL PATO (FIXED Y GIGANTE) */
+/* EL PATO (REDEFINIDO PARA SU PISTA) */
+/* El #the-duck global fue redefinido dentro del bloque de Duck Lane */
 #the-duck {
-    position: fixed; /* FIJO EN PANTALLA */
+    position: fixed; /* FIJO EN PANTALLA, esto se anula con el !important en .duck-lane-container */
     bottom: 0; left: -150px;
     width: 96px; height: 96px; 
     image-rendering: pixelated; 
