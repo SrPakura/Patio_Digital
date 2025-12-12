@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. SI NO HAY PATO, NOS VAMOS (Seguridad)
     if (!duck) return;
 
-    // 2. CHECK DE ACCESIBILIDAD (GORLOCK APPROVES)
+    // 2. CHECK DE ACCESIBILIDAD
     // Si el usuario prefiere movimiento reducido, el pato se queda quieto.
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     
