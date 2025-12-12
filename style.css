@@ -203,7 +203,6 @@ h1 { font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 0.9; margin-bottom: 2re
     overflow: hidden; /* Para que no genere scroll lateral */
     z-index: 50;
     /* Opcional: Patrón de puntos suave para que no esté vacío */
-    background-image: radial-gradient(#666 1px, transparent 1px); /* Puntos gris oscuro sobre negro */
     background-size: 20px 20px;
 }
 
