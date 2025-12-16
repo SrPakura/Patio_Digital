@@ -472,3 +472,109 @@ footer { background: var(--ink); color: #fff; padding: 4rem 0; border-top: var(-
     100% { left: -150px; transform: scaleX(-1); }
 }
 @keyframes exitStage { 0% { transform: scaleX(1); } 100% { left: 120vw; transform: scaleX(1); } }
+
+/* =========================================
+   TEAM SECTION: GRID ESTÁTICO (NUEVO // traducción, me daba pereza reemplazar el otro trozo de código, así que lo sobreescribo como buen vago)
+   ========================================= */
+
+.team-static-section {
+    padding: 6rem 0;
+    background: #fff;
+    /* Mantenemos el patrón de fondo */
+    background-image: radial-gradient(#ccc 1px, transparent 1px);
+    background-size: 30px 30px;
+    border-bottom: var(--border);
+}
+
+/* Subtítulo gamberro */
+.team-subtitle {
+    font-size: 1.2rem;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    background: #fff;
+    border: 2px solid var(--ink);
+    padding: 0.5rem 1rem;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+}
+
+/* El Grid de 3 columnas */
+.team-grid-static {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: start;
+}
+
+/* TARJETA BASE */
+.member-card-static {
+    border: var(--border);
+    background: #fff;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+}
+
+.member-card-static:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 var(--ink);
+}
+
+/* IMAGEN (Cuadrada/Rectangular arriba) */
+.member-img {
+    width: 100%;
+    aspect-ratio: 4/5; /* Formato retrato */
+    overflow: hidden;
+    border-bottom: var(--border);
+    position: relative;
+}
+
+.member-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%); /* B/N por defecto */
+    transition: 0.4s;
+}
+
+/* Al pasar el ratón por la tarjeta, foto a color */
+.member-card-static:hover .member-img img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* CAJA DE INFO (La parte de abajo) */
+.member-info {
+    padding: 2rem;
+    color: var(--ink);
+}
+
+/* COLORES POR PERSONAJE (Fondo de la caja de texto) */
+.card-alex .member-info { background: #FFD5C2; } /* Tinte Naranja suave */
+.card-carla .member-info { background: #D6D6FF; } /* Tinte Azul suave */
+.card-tori .member-info { background: #E5E5E5; } /* Gris/Amarillo suave */
+
+/* TIPOGRAFÍA INTERNA */
+.member-info h3 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+}
+
+.role-badge {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.3rem 0.8rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.member-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+    color: #000;
+}
